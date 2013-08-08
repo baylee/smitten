@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: final_project_development
+  pool: 5
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: final_project_test
+  pool: 5
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  host: localhost
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: final_project_production
+  pool: 5
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  host: localhost
