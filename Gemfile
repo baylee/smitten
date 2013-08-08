@@ -53,3 +53,4 @@ gem 'unicorn'
 # gem 'debugger'
 
 gem 'devise'
+gem 'omniauth-facebook'
