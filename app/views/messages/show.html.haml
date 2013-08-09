@@ -1,0 +1,11 @@
+%h1
+  Your Conversation with
+  = @conversation_partner.email
+
+#new_message_container
+  = render 'form'
+
+= hidden_field_tag "refresh_url", message_path(@conversation_partner.id)
+
+#messages_container
+  = render 'messages'

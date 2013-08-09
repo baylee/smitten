@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :services, :dependent => :destroy
-  has_many :messages, foreign_key: 'sender_id'
-  has_many :messages, foreign_key: 'receiver_id'
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
+  has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
   has_many :sparks
 
 
