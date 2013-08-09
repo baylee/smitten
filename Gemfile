@@ -9,6 +9,9 @@ gem 'pg'
 
 gem 'dotenv-rails'
 gem 'quiet_assets'
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'koala'
 
 group :development do
   gem 'pry-rails'
@@ -52,5 +55,3 @@ gem 'unicorn'
 # To use debugger
 # gem 'debugger'
 
-gem 'devise'
-gem 'omniauth-facebook'

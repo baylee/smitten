@@ -27,17 +27,20 @@ class ServicesController < ApplicationController
       # map the returned hashes to our variables first - the hashes differ for every service
       if service_route == 'facebook'
         omniauth['extra']['raw_info']['email'] ? email =  omniauth['extra']['raw_info']['email'] : email = ''
+        omniauth['credentials']['token'] ? access_token =  omniauth['credentials']['token'] : access_token = ''
         omniauth['extra']['raw_info']['name'] ? name =  omniauth['extra']['raw_info']['name'] : name = ''
         omniauth['extra']['raw_info']['id'] ?  uid =  omniauth['extra']['raw_info']['id'] : uid = ''
         omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
       elsif service_route == 'github'
         omniauth['user_info']['email'] ? email =  omniauth['user_info']['email'] : email = ''
+        omniauth['credentials']['token'] ? access_token =  omniauth['credentials']['token'] : access_token = ''
         omniauth['user_info']['name'] ? name =  omniauth['user_info']['name'] : name = ''
         omniauth['extra']['raw_info']['id'] ?  uid =  omniauth['extra']['raw_info']['id'] : uid = ''
         omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
       elsif service_route == 'twitter'
         email = ''    # Twitter API never returns the email address
         omniauth['user_info']['name'] ? name =  omniauth['user_info']['name'] : name = ''
+        omniauth['credentials']['token'] ? access_token =  omniauth['credentials']['token'] : access_token = ''
         omniauth['uid'] ?  uid =  omniauth['uid'] : uid = ''
         omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
       else
@@ -65,7 +68,7 @@ class ServicesController < ApplicationController
               existinguser = User.find_by_email(email)
               if existinguser
                 # map this new login method via a service provider to an existing account if the email address is the same
-                existinguser.services.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
+                existinguser.services.create(:provider => provider, :uid => uid)#, :uname => name, :uemail => email)
                 flash[:notice] = 'Sign in via ' + provider.capitalize + ' has been added to your account ' + existinguser.email + '. Signed in successfully!'
                 sign_in_and_redirect(:user, existinguser)
               else
@@ -76,7 +79,7 @@ class ServicesController < ApplicationController
                 user = User.new :email => email, :password => SecureRandom.hex(10)#, :fullname => name  COMMENTED!!
 
                 # add this authentication service to our new user
-                user.services.build(:provider => provider, :uid => uid)#, :uname => name, :uemail => email)
+                user.services.build(:provider => provider, :uid => uid, :oauth_token => access_token)#, :uname => name, :uemail => email)
 
                 # do not send confirmation email, we directly save and confirm the new record
                 # user.skip_confirmation! COMMENTED!!
@@ -98,7 +101,7 @@ class ServicesController < ApplicationController
           # check if this service is already linked to his/her account, if not, add it
           auth = Service.find_by_provider_and_uid(provider, uid)
           if !auth
-            current_user.services.create(:provider => provider, :uid => uid, :uname => name, :uemail => email)
+            current_user.services.create(:provider => provider, :uid => uid)#, :uname => name, :uemail => email)
             flash[:notice] = 'Sign in via ' + provider.capitalize + ' has been added to your account.'
             redirect_to services_path
           else

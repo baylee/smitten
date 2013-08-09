@@ -1,4 +1,4 @@
 class Service < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :provider, :uid
+  attr_accessible :provider, :uid, :oauth_token
 end
