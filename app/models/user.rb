@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :services, :dependent => :destroy
+  has_many :messages, foreign_key: 'sender_id'
+  has_many :messages, foreign_key: 'receiver_id'
+  has_many :sparks
 
 
 	# def self.from_omniauth(auth)

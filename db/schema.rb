@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809034459) do
+ActiveRecord::Schema.define(:version => 20130809213503) do
+
+  create_table "messages", :force => true do |t|
+    t.text     "content"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "services", :force => true do |t|
     t.string   "provider"
@@ -23,6 +31,17 @@ ActiveRecord::Schema.define(:version => 20130809034459) do
   end
 
   add_index "services", ["user_id"], :name => "index_authentications_on_user_id"
+
+  create_table "sparks", :force => true do |t|
+    t.text     "content"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "sparks", ["user_id"], :name => "index_sparks_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
