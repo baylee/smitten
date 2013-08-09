@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :services, :dependent => :destroy
-  has_many :messages, foreign_key: 'sender_id'
-  has_many :messages, foreign_key: 'receiver_id'
+  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
+  has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
   has_many :sparks
 
 
@@ -56,4 +56,21 @@ class User < ActiveRecord::Base
   def friends_count
     facebook { |fb| fb.get_connection("me", "friends").size }
   end
+
+  def all_messages(conversation_partner)
+    @messages = []
+    sent_messages = self.sent_messages.where('receiver_id = ?', conversation_partner.id)
+    received_messages = self.received_messages.where('sender_id = ?', conversation_partner.id)
+
+    @messages << sent_messages
+    @messages << received_messages
+    @messages.flatten!
+
+    @messages = @messages.sort {
+      |a,b| b.created_at <=> a.created_at
+    }
+
+    @messages
+  end
+
 end

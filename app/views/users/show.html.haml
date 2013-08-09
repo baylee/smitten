@@ -1,0 +1,7 @@
+%h2 Messages
+%table
+  %tr
+    %th Partner
+  - @message_partners.each do |partner|
+    %tr
+      %td= link_to partner.email, message_path(partner.id)
