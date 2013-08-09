@@ -1,4 +1,12 @@
 FinalProject::Application.routes.draw do
+  get "sparks/index"
+
+  get "sparks/new"
+
+  get "sparks/create"
+
+  get "sparks/locate"
+
   match 'users/auth/:service/callback' => 'services#create'
   resources :services, :only => [:index, :create, :destroy]
 
