@@ -1,9 +1,9 @@
 FinalProject::Application.routes.draw do
-  get "messages/:partner_id" => 'messages#show', as: :conversation
+  get "messages/:partner_id" => 'messages#show', as: :message
 
-  get "messages/:partner_id/new" => 'messages#new'
+  get "messages/:partner_id/new" => 'messages#new', as: :new_message
 
-  post "messages/:partner_id" => 'messages#create'
+  post "messages/:partner_id" => 'messages#create', as: :messages
 
   match 'users/auth/:service/callback' => 'services#create'
   resources :services, :only => [:index, :create, :destroy]

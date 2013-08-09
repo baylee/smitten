@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     sent_messages = current_user.sent_messages.where('receiver_id = ?', @conversation_partner.id)
     received_messages = current_user.received_messages.where('sender_id = ?', @conversation_partner.id)
 
-    @messsages << sent_messages
+    @messages << sent_messages
     @messages << received_messages
     @messages.flatten!
 
@@ -22,6 +22,13 @@ class MessagesController < ApplicationController
   end
 
   def new
+    @message = Message.new
+    @conversation_partner = User.find(params[:partner_id])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
