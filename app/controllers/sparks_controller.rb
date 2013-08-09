@@ -7,14 +7,13 @@ class SparksController < ApplicationController
   end
 
   def create
-    binding.pry
     @spark = Spark.create(params[:spark])
     @spark.save
     respond_to do |format|
       format.html # new.html.erb
       format.js
     end
-
+    redirect_to root_path
   end
 
 
