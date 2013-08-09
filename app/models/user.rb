@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :services, :dependent => :destroy
 
 
-	# def self.from_omniauth(auth) COMMENTED!!
+	# def self.from_omniauth(auth)
 	#   where(auth.slice(:provider, :uid)).first_or_create do |user|
 	#     user.provider = auth.provider
 	#     user.uid = auth.uid
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 	#   end
 	# end
 
-	# def self.new_with_session(params, session) COMMENTED!!
+	# def self.new_with_session(params, session)
 	#   if session["devise.user_attributes"]
 	#     new(session["devise.user_attributes"], without_protection: true) do |user|
 	#       user.attributes = params
@@ -31,11 +31,11 @@ class User < ActiveRecord::Base
 	#   end
 	# end
 
-	# def password_required? COMMENTED!!
+	# def password_required?
 	#   super && provider.blank?
 	# end
 
-	# def update_with_password(params, *options) COMMENTED!!
+	# def update_with_password(params, *options)
 	#   if encrypted_password.blank?
 	#     update_attributes(params, *options)
 	#   else
