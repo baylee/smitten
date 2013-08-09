@@ -1,4 +1,8 @@
 %h1 Welcome to the index page!
 %p Find me in app/views/home/index.html.haml
 
+- if user_signed_in?
+  = current_user.facebook.get_connection("me", "feed")[0]["place"]
+
+
 
