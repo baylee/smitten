@@ -1,0 +1,35 @@
+
+$(document).ready(function() {
+if(navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+    send_data()
+
+  },
+  function() {
+    handleNoGeolocation(true);
+  }
+  );
+}
+// Browser doesn't support Geolocation
+else {
+  handleNoGeolocation(false);
+}
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    alert("Geolocation service failed.");
+  } else {
+    alert("Your browser doesn't support geolocation.");
+  }
+  latitude = 40.72;
+  longitude = -74;
+};
+
+var send_data = function() {
+  $("#lat").val(latitude)
+  $("#lon").val(longitude)
+
+}
+});

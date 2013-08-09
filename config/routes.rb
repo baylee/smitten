@@ -1,14 +1,10 @@
 FinalProject::Application.routes.draw do
-  get "sparks/index"
 
-  get "sparks/new"
 
-  get "sparks/create"
-
-  get "sparks/locate"
 
   match 'users/auth/:service/callback' => 'services#create'
   resources :services, :only => [:index, :create, :destroy]
+  resources :sparks, :only => [:index, :new, :create]
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
