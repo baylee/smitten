@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809002011) do
+ActiveRecord::Schema.define(:version => 20130809002702) do
 
   create_table "services", :force => true do |t|
     t.string   "provider"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "uid"
   end
 
   add_index "services", ["user_id"], :name => "index_authentications_on_user_id"
