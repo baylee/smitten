@@ -34,7 +34,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem "warden", "~> 1.2.3"
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

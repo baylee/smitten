@@ -178,7 +178,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    warden (1.2.2)
+    warden (1.2.3)
       rack (>= 1.0)
 
 PLATFORMS
@@ -203,3 +203,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   unicorn
+  warden (~> 1.2.3)
