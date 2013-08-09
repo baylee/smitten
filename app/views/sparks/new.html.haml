@@ -1,0 +1,9 @@
+%h1 Make a new Spark
+%p Find me in app/views/sparks/new.html.haml
+
+= form_for @spark, :method => "post" do |f|
+  = f.text_area :content, :id => "content"
+  = f.hidden_field :user_id, :value => current_user.id
+  = f.hidden_field :latitude,  :id => "lat"
+  = f.hidden_field :longitude, :id => "lon"
+  = f.submit
