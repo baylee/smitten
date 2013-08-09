@@ -1,3 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  refresh_messages_container = () ->
+    $.ajax
+      dataType: 'script'
+      url: document.URL
+
+  start_timer = () ->
+    clock = setInterval(refresh_messages_container, 10000)
+
+  if $('#messages_container').length != 0
+    start_timer()

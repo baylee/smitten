@@ -3,17 +3,7 @@ class MessagesController < ApplicationController
     @message = Message.new
     @conversation_partner = User.find(params[:partner_id])
 
-    @messages = []
-    sent_messages = current_user.sent_messages.where('receiver_id = ?', @conversation_partner.id)
-    received_messages = current_user.received_messages.where('sender_id = ?', @conversation_partner.id)
-
-    @messages << sent_messages
-    @messages << received_messages
-    @messages.flatten!
-
-    @messages = @messages.sort {
-      |a,b| b.created_at <=> a.created_at
-    }
+    @messages = current_user.all_messages(@conversation_partner)
 
     respond_to do |format|
       format.html
@@ -21,16 +11,29 @@ class MessagesController < ApplicationController
     end
   end
 
-  def new
-    @message = Message.new
-    @conversation_partner = User.find(params[:partner_id])
+  # def new
+  #   @message = Message.new
+  #   @conversation_partner = User.find(params[:partner_id])
 
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
+  #   respond_to do |format|
+  #     format.html
+  #     format.js
+  #   end
+  # end
 
   def create
+    @message = current_user.sent_messages.create(params[:message])
+
+    respond_to do |format|
+      if @message.save
+        @conversation_partner = User.find(params[:message][:receiver_id])
+        @messages = current_user.all_messages(@conversation_partner)
+        format.html { redirect_to message_path(@message.receiver_id), notice: 'Message has been sent'}
+        format.js
+      else
+        format.html { render action: 'show', notice: 'Message failed to send' }
+        format.js
+      end
+    end
   end
 end
