@@ -11,16 +11,6 @@ class MessagesController < ApplicationController
     end
   end
 
-  # def new
-  #   @message = Message.new
-  #   @conversation_partner = User.find(params[:partner_id])
-
-  #   respond_to do |format|
-  #     format.html
-  #     format.js
-  #   end
-  # end
-
   def create
     @message = current_user.sent_messages.create(params[:message])
 
