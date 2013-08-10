@@ -10,11 +10,6 @@ $(document).ready(function() {
       }
     };
 
-    var send_data = function() {
-      $("#lat").val(latitude)
-      $("#lon").val(longitude)
-
-    }
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         latitude = position.coords.latitude;
@@ -29,6 +24,14 @@ $(document).ready(function() {
     // If browser doesn't support Geolocation
     else {
       handleNoGeolocation(false);
+    }
+
+    // Add geolocated lat and long to the hidden form fields for new spark
+    var send_data = function() {
+      $("#lat").val(latitude)
+      $("#lon").val(longitude)
+      $("#geolocation_status").empty().append("<p>This spark will be associated with your current location - lat: " + latitude + ", long: " + longitude + "<p>")
+
     }
   }
 

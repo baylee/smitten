@@ -14,7 +14,7 @@ class SparksController < ApplicationController
         format.html { redirect_to root_path, notice: 'Spark has been sent! YAY!'}
         format.js
       else
-        format.html { redirect_to new_spark_path, :alert => 'Spark failed. You must allow your location to be shared.' }
+        format.html { redirect_to new_spark_path, :alert => 'Spark failed. You must first allow your location to be shared.' }
         format.js
       end
     end
