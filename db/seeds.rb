@@ -18,10 +18,11 @@
   tom = User.find_by_email("mztwxwx_thurnescuwitzsensteinskymanbergson_1376089389@tfbnw.net")
   will = User.find_by_email("jcjdumi_chaiman_1376089402@tfbnw.net")
   joe = User.find_by_email("pxoozsy_schrockescu_1376089396@tfbnw.net")
-  dick = User.find_by_email("imktrlv_carrierobergwitzskysensteinmanescuson_1376089391@tfbnw.net")
+  # dick = User.find_by_email("imktrlv_carrierobergwitzskysensteinmanescuson_1376089391@tfbnw.net")
 
   #joe's spark when he saw tom
   Spark.create(:content => "Saw a beautiful man with dreamy eyes. You were holding a big burrito.", :user_id => joe.id, :latitude => 37.809089658172, :longitude => -122.47270142897)
+  Spark.create(:content => "This should be the only spark on toms page.", :user_id => joe.id, :latitude => 37.809089658172, :longitude => -122.47270142897)
 
   #susan's spark when she saw will
   Spark.create(

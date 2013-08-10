@@ -4,9 +4,15 @@
 - if user_signed_in?
   %h4 Sparks near your past locations:
   %ul
-    - @nearsparks.each do |x|
-      - if !x[0].nil?
-        = x[0].content
+    - if !@nearsparks[0].nil?
+      -@nearsparks.each do |x|
+        / -binding.pry
+        %li
+          = x.content
+          = x.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
+          = x.user_id
+
+
 
 
 
