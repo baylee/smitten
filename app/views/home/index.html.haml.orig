@@ -4,15 +4,21 @@
 - if user_signed_in?
   %h4 Sparks near your past locations:
   %ul
+<<<<<<< HEAD
     - if !@nearsparks[0].nil?
       -@nearsparks.each do |x|
         / -binding.pry
         %li
-          = link_to truncate(x.content)
+          = x.content
           = x.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
           = x.user_id
 
 
+=======
+    - @nearsparks.each do |x|
+      - if !x[0].nil?
+        %li= link_to truncate(x[0].content), spark_path(x[0].id)
+>>>>>>> anonymity
 
 
 

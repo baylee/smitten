@@ -1,7 +1,7 @@
 %table
   %tr
     %th= current_user.email
-    %th= @conversation_partner.email
+    %th= current_user.anonymized_name(@conversation_partner)
     %th Sent at
 
   - @messages.each do |message|
