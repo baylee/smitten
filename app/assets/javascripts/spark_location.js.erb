@@ -1,33 +1,45 @@
-
 $(document).ready(function() {
-if(navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
-    send_data()
 
-  },
-  function() {
-    handleNoGeolocation(true);
+  var ask_for_geolocation = function() {
+
+    function handleNoGeolocation(errorFlag) {
+      if (errorFlag) {
+        console.log("Geolocation service failed.");
+      } else {
+        console.log("Your browser doesn't support geolocation.");
+      }
+    };
+
+    var send_data = function() {
+      $("#lat").val(latitude)
+      $("#lon").val(longitude)
+
+    }
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        send_data()
+      },
+
+      function() {
+        handleNoGeolocation(true);
+      });
+    }
+    // If browser doesn't support Geolocation
+    else {
+      handleNoGeolocation(false);
+    }
   }
-  );
-}
-// Browser doesn't support Geolocation
-else {
-  handleNoGeolocation(false);
-}
 
-function handleNoGeolocation(errorFlag) {
-  if (errorFlag) {
-    console.log("Geolocation service failed.");
-  } else {
-    console.log("Your browser doesn't support geolocation.");
+  if ($('#new_spark').length != 0){
+    ask_for_geolocation();
   }
-};
 
-var send_data = function() {
-  $("#lat").val(latitude)
-  $("#lon").val(longitude)
-
-}
 });
+
+
+
+
+
+
