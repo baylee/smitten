@@ -1,16 +1,25 @@
 class HomeController < ApplicationController
   def index
-    onlylocation_posts = []
+    locations_latlong = []
     @nearsparks = []
     if current_user
       current_user.facebook.get_connection("me", "feed").each do |x|
         if !x["place"].nil?
-          onlylocation_posts << x
+          locations_latlong << [x["place"]["location"]["latitude"], x["place"]["location"]["longitude"]]
+
+        end
+        current_user.sparks.each do |z|
+          locations_latlong << [z.latitude, z.longitude]
         end
       end
-      onlylocation_posts.each do |y|
-       @nearsparks << Spark.near([y["place"]["location"]["latitude"], y["place"]["location"]["longitude"]], 0.5)
+      locations_latlong.each do |y|
+        sparks_near_location = Spark.near([y[0],y[1]], 0.5)
+        if !sparks_near_location.empty?
+            @nearsparks << sparks_near_location
+        end
       end
     end
+    @nearsparks.flatten!
+    @nearsparks = @nearsparks.uniq{|x| x.id}
   end
 end
