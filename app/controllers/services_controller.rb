@@ -76,7 +76,7 @@ class ServicesController < ApplicationController
                 name = name[0, 39] if name.length > 39             # otherwise our user validation will hit us
 
                 # new user, set email, a random password and take the name from the authentication service
-                user = User.new :email => email, :password => SecureRandom.hex(10)#, :fullname => name  COMMENTED!!
+                user = User.new :email => email#, :password => SecureRandom.hex(10)#, :fullname => name  COMMENTED!!
 
                 # add this authentication service to our new user
                 user.services.build(:provider => provider, :uid => uid, :oauth_token => access_token)#, :uname => name, :uemail => email)
