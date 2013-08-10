@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :sparks
 
 
+  # NOT NEEDED WHEN WE ARE ONLY ADDING USERS THROUGH FB
+  #
 	# def self.from_omniauth(auth)
 	#   where(auth.slice(:provider, :uid)).first_or_create do |user|
 	#     user.provider = auth.provider
@@ -34,17 +36,17 @@ class User < ActiveRecord::Base
 	#   end
 	# end
 
-	# def password_required?
-	#   super && provider.blank?
-	# end
+	def password_required?
+	  super && services.first.provider.blank?
+	end
 
-	# def update_with_password(params, *options)
-	#   if encrypted_password.blank?
-	#     update_attributes(params, *options)
-	#   else
-	#     super
-	#   end
-	# end
+	def update_with_password(params, *options)
+	  if encrypted_password.blank?
+	    update_attributes(params, *options)
+	  else
+	    super
+	  end
+	end
 
   def facebook
     @facebook ||= Koala::Facebook::API.new(services.first.oauth_token)
