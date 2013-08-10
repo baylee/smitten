@@ -1,6 +1,6 @@
 %h1
   Your Conversation with
-  = @conversation_partner.email
+  = current_user.anonymized_name(@conversation_partner)
 
 #new_message_container
   = render 'form'
