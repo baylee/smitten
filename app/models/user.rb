@@ -75,4 +75,22 @@ class User < ActiveRecord::Base
     @messages
   end
 
+  def received_message_from_partner?(conversation_partner)
+    x = false
+    self.received_messages.each do |message|
+      if message.sender_id == conversation_partner.id
+        x = true
+      end
+    end
+    x
+  end
+
+  def anonymized_name(conversation_partner)
+    if self.received_message_from_partner?(conversation_partner)
+      conversation_partner.email
+    else
+      'Anonymous'
+    end
+  end
+
 end
