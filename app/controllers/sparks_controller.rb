@@ -1,5 +1,6 @@
 class SparksController < ApplicationController
-  def index
+  def show
+    @spark = Spark.find(params[:id])
   end
 
   def new

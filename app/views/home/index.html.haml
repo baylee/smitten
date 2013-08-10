@@ -6,7 +6,7 @@
   %ul
     - @nearsparks.each do |x|
       - if !x[0].nil?
-        = x[0].content
+        %li= link_to truncate(x[0].content), spark_path(x[0].id)
 
 
 
