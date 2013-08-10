@@ -5,6 +5,8 @@
     = current_user.email
   = link_to 'Profile', profile_path
   |
+  = link_to 'Spark!', new_spark_path
+  |
   = link_to "Logout", destroy_user_session_path, method: :delete
 -else
   / = link_to "Sign up", new_user_registration_path

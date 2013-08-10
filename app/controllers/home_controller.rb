@@ -10,7 +10,6 @@ class HomeController < ApplicationController
       end
       onlylocation_posts.each do |y|
        @nearsparks << Spark.near([y["place"]["location"]["latitude"], y["place"]["location"]["longitude"]], 0.5)
-       # binding.pry
       end
     end
   end

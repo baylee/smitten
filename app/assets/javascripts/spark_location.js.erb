@@ -19,12 +19,10 @@ else {
 
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
-    alert("Geolocation service failed.");
+    console.log("Geolocation service failed.");
   } else {
-    alert("Your browser doesn't support geolocation.");
+    console.log("Your browser doesn't support geolocation.");
   }
-  latitude = 40.72;
-  longitude = -74;
 };
 
 var send_data = function() {
