@@ -69,6 +69,7 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    geocoder (1.1.8)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -196,6 +197,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   dotenv-rails
+  geocoder
   haml-rails
   jquery-rails
   koala

@@ -2,10 +2,11 @@
 %p Find me in app/views/home/index.html.haml
 
 - if user_signed_in?
+  %h4 Sparks near your past locations:
   %ul
-    - current_user.facebook.get_connection("me", "feed").each do |x|
-      %li= x["place"]
-      %li= x["created_time"]
+    - @nearsparks.each do |x|
+      - if !x[0].nil?
+        = x[0].content
 
 
 

@@ -12,6 +12,7 @@ gem 'quiet_assets'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'koala'
+gem 'geocoder'
 
 group :development do
   gem 'pry-rails'

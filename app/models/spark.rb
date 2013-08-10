@@ -4,4 +4,5 @@ class Spark < ActiveRecord::Base
   validates_presence_of :latitude, :longitude
 
   belongs_to :user
+  reverse_geocoded_by :latitude, :longitude
 end
