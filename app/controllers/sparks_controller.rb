@@ -9,11 +9,8 @@ class SparksController < ApplicationController
   def create
     @spark = Spark.create(params[:spark])
     @spark.save
-    respond_to do |format|
-      format.html # new.html.erb
-      format.js
-    end
     redirect_to root_path
+
   end
 
 
