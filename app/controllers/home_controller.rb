@@ -4,4 +4,9 @@ class HomeController < ApplicationController
   def index
     @nearby_sparks = current_user.relevant_sparks
   end
+
+def landing_page
+
+
+end
 end
