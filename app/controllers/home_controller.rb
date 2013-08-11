@@ -26,11 +26,11 @@ class HomeController < ApplicationController
     end
 
     # For each location in location_latlong, find the nearby sparks
-    sparks_near_time.each do |y|
-      @nearby_sparks << Spark.near([y[0],y[1]], 0.5)
+    sparks_near_time.flatten!
+    sparks_near_time.each do |spark|
+      @nearby_sparks << Spark.near([spark.latitude, spark.longitude], 0.5)
     end
 
-    binding.pry
     # This gets rid of any nearby spark searches that returned nothing
     @nearby_sparks.flatten!
     # Since sparks may have been added more than once (e.g., if you were close to the same
