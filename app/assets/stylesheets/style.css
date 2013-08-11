@@ -25,6 +25,9 @@ body{
 
 }
 
+#homecontainer {
+  margin-top: 70px;
+}
 
 #header ul {
   text-decoration: none;
