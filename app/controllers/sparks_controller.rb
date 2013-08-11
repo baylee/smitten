@@ -22,5 +22,6 @@ class SparksController < ApplicationController
   end
 
   def places
+    @nearby_sparks = current_user.relevant_sparks
   end
 end
