@@ -1,0 +1,35 @@
+#header {
+  font-family: 'Coustard', serif;
+  font-size: 45px;
+  width: 100%;
+  position:fixed;
+  top:0;
+  left:0;
+  margin: 0;
+  padding: 0;
+  background-color: gold;
+  text-align: center;
+
+}
+
+#header a {
+  font-size: 20px;
+}
+
+body{
+  margin-top: 80px;
+}
+
+#header ul {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+#header li {
+  display: inline;
+  color: white;
+  margin-right: 20px;
+
+}
