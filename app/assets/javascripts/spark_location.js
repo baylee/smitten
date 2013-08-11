@@ -28,14 +28,18 @@ $(document).ready(function() {
 
     // Add geolocated lat and long to the hidden form fields for new spark
     var send_data = function() {
-      $("#lat").val(latitude)
-      $("#lon").val(longitude)
+      $("#lat").val(latitude);
+      $("#lon").val(longitude);
+      // the following are for the "drop a pin" button
+      $("#lat2").val(latitude);
+      $("#lon2").val(longitude);
+
       $("#geolocation_status").empty().append("<p>This spark will be associated with your current location - lat: " + latitude + ", long: " + longitude + "<p>")
 
     }
   }
 
-  if ($('#new_spark').length != 0){
+  if ($('#geolocation_status').length != 0){
     ask_for_geolocation();
   }
 

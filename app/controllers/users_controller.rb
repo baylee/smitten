@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+
+  end
+
   def show
     user_sparks = Spark.where(:user_id => current_user.id)
 

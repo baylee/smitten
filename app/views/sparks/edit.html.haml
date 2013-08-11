@@ -1,0 +1,6 @@
+%h1 Edit this Spark
+
+
+= form_for @spark, :method => "put" do |f|
+  = f.text_area :content, :id => "content"
+  = f.submit

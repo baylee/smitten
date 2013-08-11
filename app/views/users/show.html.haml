@@ -15,7 +15,7 @@
     %th
   - @user_sparks.each do |spark|
     %tr
-      %td= spark.content
+      %td= !spark.content.nil? ? spark.content : (link_to "(This spark needs a message)", spark_path(spark))
       %td= spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
       %td= spark.latitude
       %td= spark.longitude
