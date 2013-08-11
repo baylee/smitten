@@ -1,15 +1,10 @@
 class UsersController < ApplicationController
   def show
-    @message_partners = []
+    user_sparks = Spark.where(:user_id => current_user.id)
 
-    current_user.sent_messages.each do |message|
-      @message_partners << message.receiver
-    end
+    @user_sparks = user_sparks.sort {
+      |a,b| b.created_at <=> a.created_at
+    }
 
-    current_user.received_messages.each do |message|
-      @message_partners << message.sender
-    end
-
-    @message_partners = @message_partners.uniq{ |partner| partner }
   end
 end

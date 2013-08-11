@@ -1,10 +1,24 @@
-%h2 Messages
+%h1 Welcome to your Profile Page
+= link_to "Edit Profile", edit_user_registration_path
+
+/ need to add facebook picture url...
+#facebook_picture
+
+%h2 Your Recent Notes
+
 %table
   %tr
-    %th Partner
-  - @message_partners.each do |partner|
+    %th Content
+    %th Created At
+    %th Latitude
+    %th Longitude
+    %th
+  - @user_sparks.each do |spark|
     %tr
-      %td= link_to partner.email, message_path(partner.id)
+      %td= spark.content
+      %td= spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
+      %td= spark.latitude
+      %td= spark.longitude
+      %td= link_to "Delete", spark_path(spark), :data => { :confirm => "Are you sure?" }, :method => :delete
 
 
-= link_to "Edit Profile", edit_user_registration_path

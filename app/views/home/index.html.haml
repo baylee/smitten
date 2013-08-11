@@ -7,7 +7,7 @@
       -@nearsparks.each do |x|
         / -binding.pry
         %li
-          = link_to truncate(x.content)
+          = link_to truncate(x.content), spark_path(x.id)
           = x.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
           = x.user_id
 

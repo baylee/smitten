@@ -21,4 +21,15 @@ class SparksController < ApplicationController
     end
   end
 
+  def destroy
+    @spark = Spark.find(params[:id])
+    @spark.destroy
+
+    respond_to do |format|
+      format.html { redirect_to profile_path }
+      format.js
+    end
+  end
+
+
 end
