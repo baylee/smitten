@@ -21,6 +21,27 @@ class SparksController < ApplicationController
     end
   end
 
+  def edit
+    @spark = Spark.find(params[:id])
+    if @spark.user_id != current_user.id
+      redirect_to spark_path(@spark), :alert => "You do not have access to edit that spark."
+    end
+  end
+
+  def update
+    @spark = Spark.find(params[:id])
+
+    respond_to do |format|
+      if @spark.update_attributes(params[:spark])
+        format.html { redirect_to spark_path(@spark), notice: 'Spark has successfully updated.'}
+        format.js
+      else
+        format.html { redirect_to spark_path(@spark), :alert => 'Spark update failed.' }
+        format.js
+      end
+    end
+  end
+
   def destroy
     @spark = Spark.find(params[:id])
     @spark.destroy

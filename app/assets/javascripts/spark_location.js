@@ -39,7 +39,7 @@ $(document).ready(function() {
     }
   }
 
-  if ($('#new_spark').length != 0){
+  if ($('#geolocation_status').length != 0){
     ask_for_geolocation();
   }
 
