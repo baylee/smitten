@@ -15,9 +15,9 @@
   <div id="header">
 
     <ul>
-    <li class="left"><%= image_tag "noun_project_2820.svg" %></li>
-    <li>Smitten</li>
-    <li class ="right"><%= image_tag "noun_project_15348.svg" %></li>
+    <li class="left"><%= link_to image_tag("noun_project_2820.svg"), new_spark_path %></li>
+    <li><%= link_to "Smitten", root_path %></li>
+    <li class ="right"><%= link_to image_tag("noun_project_15348.svg"), dashboard_path %></li>
 
     </ul>
 
