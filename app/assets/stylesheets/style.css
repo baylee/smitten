@@ -2,13 +2,16 @@
   font-family: 'Coustard', serif;
   font-size: 45px;
   width: 100%;
+
   position:fixed;
   top:0;
   left:0;
   margin: 0;
   padding: 0;
+
   background-color: brown;
   text-align: center;
+
 
 }
 
@@ -17,10 +20,11 @@
 }
 
 body{
-  margin: 60px auto;
+  margin: 0px auto;
   border: 1px solid black;
 
 }
+
 
 #header ul {
   text-decoration: none;
