@@ -21,4 +21,6 @@ class SparksController < ApplicationController
     end
   end
 
+  def places
+  end
 end

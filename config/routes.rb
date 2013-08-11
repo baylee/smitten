@@ -8,6 +8,7 @@ FinalProject::Application.routes.draw do
   match 'users/auth/:service/callback' => 'services#create'
   resources :services, :only => [:index, :create, :destroy]
   resources :sparks, :only => [:show, :new, :create]
+  get 'places' => 'sparks#places', as: 'places'
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 

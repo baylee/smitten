@@ -93,4 +93,38 @@ class User < ActiveRecord::Base
     end
   end
 
+  def relevant_sparks
+    locations_latlong = []
+    sparks_near_time = []
+    nearby_sparks = []
+
+    # For each post on FB, if there is a location attached, then put the lat and lon of
+    # that location into an array, and push that array into locations_latlong
+    self.facebook.get_connection("me", "feed").each do |fb_post|
+      if !fb_post["place"].nil?
+        locations_latlong << [fb_post["place"]["location"]["latitude"], fb_post["place"]["location"]["longitude"], Time.zone.parse(fb_post["created_time"])]
+      end
+    end
+
+    # Also push the location of the user's sparks into the locations_latlong array
+    # locations_latlong now holds all the locations a user has been
+    self.sparks.each do |spark|
+      locations_latlong << [spark.latitude, spark.longitude, spark.created_at]
+    end
+
+    # Find sparks within a time range around each location_latlong object
+    locations_latlong.each do |location|
+      sparks_near_time << Spark.where('created_at between ? and ?', location[2] - 3600, location[2] + 3600)
+    end
+
+    # For each location in location_latlong, find the nearby sparks
+    sparks_near_time.flatten!
+    sparks_near_time.each do |spark|
+      nearby_sparks << Spark.near([spark.latitude, spark.longitude], 0.5)
+    end
+
+    # This gets rid of any nearby spark searches that returned nothing
+    nearby_sparks.flatten!
+  end
+
 end
