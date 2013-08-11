@@ -29,7 +29,31 @@ body{
 
 #header li {
   display: inline;
-  color: white;
-  margin-right: 20px;
+  color: black;
 
+}
+
+#header li img{
+  margin-top: 10px;
+  height: 50px;
+  width: auto;
+}
+
+
+
+.left {
+position: absolute;
+top: 0;
+left: 10px;
+}
+
+#header .left img {
+  margin-top: 5px;
+  height: 55px;
+}
+
+.right {
+  position: absolute;
+  top: 0;
+  right: 10px;
 }
