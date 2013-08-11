@@ -118,7 +118,8 @@ class User < ActiveRecord::Base
 
     near_a_location << Spark.near([location[0], location[1]], 0.5)
     near_a_location.flatten!
-    nearby_sparks << near_a_location.select { |spark| (created_at > location[2] - 3600) && (created_at < location[2] + 3600)}
+    # nearby_sparks << near_a_location
+    nearby_sparks << near_a_location.select { |spark| spark.created_at >= (location[2] - 3600) && spark.created_at <= (location[2] + 3600)}
 
     # This gets rid of any nearby spark searches that returned nothing
     nearby_sparks.flatten!
@@ -139,7 +140,7 @@ class User < ActiveRecord::Base
       near_a_location = []
       near_a_location << Spark.near([location[0], location[1]], 0.5)
       near_a_location.flatten!
-      nearby_sparks << near_a_location.select { |spark| (created_at > location[2] - 3600) && (created_at < location[2] + 3600)}
+      nearby_sparks << near_a_location.select { |spark| spark.created_at >= (location[2] - 3600) && spark.created_at <= (location[2] + 3600)}
     end
 
     # This gets rid of any nearby spark searches that returned nothing
