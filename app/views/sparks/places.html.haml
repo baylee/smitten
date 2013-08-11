@@ -1,6 +1,6 @@
 #accordion
   - @my_locations.each do |location|
-    %h3= "#{location[0]}, #{location[1]}"
+    %h3= "#{location[0]}, #{location[1]}, #{location[2].advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')}"
     %div
       / Relevant sparks are sparks from any user that are not location_only
       - if current_user.relevant_sparks_near_location(location).empty?

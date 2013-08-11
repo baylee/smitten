@@ -11,7 +11,6 @@ $ ->
         console.log("Your browser doesn't support geolocation.")
 
     if(navigator.geolocation)
-      console.log "made it to geolocation"
       navigator.geolocation.getCurrentPosition((position) ->
         window.latitude = position.coords.latitude
         window.longitude = position.coords.longitude
