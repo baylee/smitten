@@ -126,6 +126,7 @@ class User < ActiveRecord::Base
 
     # This gets rid of any nearby spark searches that returned nothing
     nearby_sparks.flatten!
+    nearby_sparks = nearby_sparks.select { |spark| spark.content != nil }
     # Since sparks may have been added more than once (e.g., if you were close to the same
     # spark twice), we filter for unique
     nearby_sparks = nearby_sparks.uniq.sort {
