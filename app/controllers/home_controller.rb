@@ -22,4 +22,9 @@ class HomeController < ApplicationController
     @nearsparks.flatten!
     @nearsparks = @nearsparks.uniq{|x| x.id}
   end
+
+def landing_page
+
+
+end
 end

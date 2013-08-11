@@ -10,6 +10,8 @@
 
 </head>
 <body>
+  <% unless current_user.nil? %>
+
   <div id="header">
 
     <ul>
@@ -20,6 +22,8 @@
     </ul>
 
   </div>
+
+  <% end %>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
