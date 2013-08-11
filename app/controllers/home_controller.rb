@@ -24,10 +24,12 @@ class HomeController < ApplicationController
       @nearby_sparks << Spark.near([y[0],y[1]], 0.5)
     end
 
-  # This gets rid of any nearby spark searches that returned nothing
-  @nearby_sparks.flatten!
-  # Since sparks may have been added more than once (e.g., if you were close to the same
-  # spark twice), we filter for unique
-  @nearby_sparks = @nearby_sparks.uniq
+    # This gets rid of any nearby spark searches that returned nothing
+    @nearby_sparks.flatten!
+    # Since sparks may have been added more than once (e.g., if you were close to the same
+    # spark twice), we filter for unique
+    @nearby_sparks = @nearby_sparks.uniq.sort {
+      |a,b| b.created_at <=> a.updated_at
+    }
   end
 end
