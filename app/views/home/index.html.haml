@@ -1,23 +1,7 @@
-%h1 Smitten Home
+%h1 Welcome to the index page!
+= render "layouts/header"
+%p Find me in app/views/home/index.html.haml
 
-<<<<<<< HEAD
-- if user_signed_in?
-  %h4 Sparks near your past locations:
-  %ul
-    - if !@nearsparks[0].nil?
-      -@nearsparks.each do |x|
-        / -binding.pry
-        %li
-          = link_to truncate(x.content), spark_path(x.id)
-          = x.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
-          = x.user_id
-
-
-
-
-
-
-=======
 %h4 Sparks near your past locations:
 %ul
   - if !@nearby_sparks[0].nil?
@@ -26,4 +10,3 @@
         = link_to truncate(x.content), spark_path(x.id)
         = x.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
         = x.user_id
->>>>>>> 515fdfec0a97365d5b9f44fe8a244f7b429dcae6
