@@ -22,8 +22,10 @@ class SparksController < ApplicationController
   end
 
   def places
-    @nearby_sparks = current_user.relevant_sparks
+    # @nearby_sparks = current_user.relevant_sparks
+    @my_locations = current_user.places_ive_been
   end
+
   def edit
     @spark = Spark.find(params[:id])
     if @spark.user_id != current_user.id

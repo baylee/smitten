@@ -1,8 +1,14 @@
 #accordion
-  - some loop logic
-    %h3
+  - @my_locations.each do |location|
+    %h3= "#{location[0]}, #{location[1]}"
     %div
-      some stuff
+      - if current_user.relevant_sparks_near_location(location).empty?
+        No notes left
+      - else
+        %ul
+          - current_user.relevant_sparks_near_location(location).each do |spark|
+            %li= link_to truncate(spark.content), spark_path(spark.id)
+
 
 / place coords
 / if there are notes, then list the notes
