@@ -113,16 +113,12 @@ class User < ActiveRecord::Base
   end
 
   def relevant_sparks_near_location(location)
-    sparks_near_time = []
     nearby_sparks = []
+    near_a_location = []
 
-    sparks_near_time << Spark.where('created_at between ? and ?', location[2] - 3600, location[2] + 3600)
-
-    # For each location in location_latlong, find the nearby sparks
-    sparks_near_time.flatten!
-    sparks_near_time.each do |spark|
-      nearby_sparks << Spark.near([spark.latitude, spark.longitude], 0.5)
-    end
+    near_a_location << Spark.near([location[0], location[1]], 0.5)
+    near_a_location.flatten!
+    nearby_sparks << near_a_location.select { |spark| (created_at > location[2] - 3600) && (created_at < location[2] + 3600)}
 
     # This gets rid of any nearby spark searches that returned nothing
     nearby_sparks.flatten!
@@ -136,7 +132,6 @@ class User < ActiveRecord::Base
 
   def relevant_sparks
     locations_latlong = self.places_ive_been
-    sparks_near_time = []
     nearby_sparks = []
 
     # Find sparks within a time range around each location_latlong object
