@@ -12,11 +12,13 @@
     %th Created At
     %th Latitude
     %th Longitude
+    %th
   - @user_sparks.each do |spark|
     %tr
       %td= spark.content
       %td= spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
       %td= spark.latitude
       %td= spark.longitude
+      %td= link_to "Delete", spark_path(spark), :data => { :confirm => "Are you sure?" }, :method => :delete
 
 
