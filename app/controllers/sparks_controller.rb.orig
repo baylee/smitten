@@ -21,9 +21,11 @@ class SparksController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
   def places
     @nearby_sparks = current_user.relevant_sparks
   end
+=======
   def edit
     @spark = Spark.find(params[:id])
     if @spark.user_id != current_user.id
@@ -56,4 +58,5 @@ class SparksController < ApplicationController
   end
 
 
+>>>>>>> 57fc62dd5fc6b7d1a872edeab189c6a33b14fa33
 end

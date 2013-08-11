@@ -1,4 +1,19 @@
 class MessagesController < ApplicationController
+
+  def index
+    @message_partners = []
+
+    current_user.sent_messages.each do |message|
+      @message_partners << message.receiver
+    end
+
+    current_user.received_messages.each do |message|
+      @message_partners << message.sender
+    end
+
+    @message_partners = @message_partners.uniq{ |partner| partner }
+  end
+
   def show
     @message = Message.new
     @conversation_partner = User.find(params[:partner_id])
