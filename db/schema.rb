@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130809213503) do
+ActiveRecord::Schema.define(:version => 20130811183842) do
 
   create_table "messages", :force => true do |t|
     t.text     "content"
@@ -37,8 +37,9 @@ ActiveRecord::Schema.define(:version => 20130809213503) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "location_only", :default => false
   end
 
   add_index "sparks", ["user_id"], :name => "index_sparks_on_user_id"

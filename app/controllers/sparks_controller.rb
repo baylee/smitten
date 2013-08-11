@@ -8,7 +8,7 @@ class SparksController < ApplicationController
   end
 
   def create
-    @spark = Spark.create(params[:spark])
+    @spark = Spark.new(params[:spark])
 
     respond_to do |format|
       if @spark.save
@@ -20,6 +20,23 @@ class SparksController < ApplicationController
       end
     end
   end
+
+  def update_location
+    @spark = Spark.new(:latitude => params[:latitude], :longitude => params[:longitude], :location_only => true, :user_id => current_user.id)
+
+    respond_to do |format|
+      if @spark.save
+        @nearby_sparks = current_user.relevant_sparks
+        format.html { redirect_to root_path, notice: 'Spark has been sent! YAY!'}
+        format.js
+      else
+        format.html { redirect_to new_spark_path, :alert => 'Spark failed. You must first allow your location to be shared.' }
+        format.js
+      end
+    end
+
+  end
+
 
   def places
     # @nearby_sparks = current_user.relevant_sparks

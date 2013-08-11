@@ -1,0 +1,1 @@
+$('#spark_feed').empty().append("<%= j render 'home/spark_feed' %>")

@@ -3,6 +3,8 @@ FinalProject::Application.routes.draw do
   get 'dashboard' => 'users#index', as: 'dashboard'
 
   get 'landing_page' => 'home#landing_page'
+
+  post 'update_location' => 'sparks#update_location', as: :update_location
   get "messages/:partner_id" => 'messages#show', as: :message
   post "messages/:partner_id" => 'messages#create', as: :messages
   get "messages" => 'messages#index', as: :messages

@@ -1,0 +1,8 @@
+%h4 Sparks near your past locations:
+%ul
+  - if !@nearby_sparks[0].nil?
+    - @nearby_sparks.each do |x|
+      %li
+        = link_to truncate(x.content), spark_path(x.id)
+        = x.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
+        = x.user_id
