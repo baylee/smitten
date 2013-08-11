@@ -1,9 +1,10 @@
 FinalProject::Application.routes.draw do
   get 'profile' => 'users#show', as: 'profile'
+  get 'dashboard' => 'users#index', as: 'dashboard'
 
   get "messages/:partner_id" => 'messages#show', as: :message
-
   post "messages/:partner_id" => 'messages#create', as: :messages
+  get "messages" => 'messages#index', as: :messages
 
   match 'users/auth/:service/callback' => 'services#create'
   resources :services, :only => [:index, :create, :destroy]
