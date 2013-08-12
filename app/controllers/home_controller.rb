@@ -6,6 +6,8 @@ class HomeController < ApplicationController
   end
 
   def landing_page
+  end
 
+  def desktop
   end
 end
