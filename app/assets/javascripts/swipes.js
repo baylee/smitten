@@ -8,15 +8,15 @@ $( document ).ready(function(event) {
     // The function above stops events from bubbling up
     function homeswipeoptions(){
       // The function above will only be called when on the rootpage
-      $("div").on( "swipeleft", function(event) {
+      $("div").one( "swipeleft", function(event) {
         // alert("swipe left happened");
-        _.once($("#swipeleft").click());
+        $("#swipeleft").click();
         // alert("clicked on swipe left");
         event.stopImmediatePropagation();
         });
-      $("div").on( "swiperight", function(event) {
+      $("div").one( "swiperight", function(event) {
         // alert("swipe right happened");
-        _.once($("#swiperight").click());
+        $("#swiperight").click();
         // alert("clicked on swipe right");
         event.stopImmediatePropagation();
         });
@@ -24,15 +24,15 @@ $( document ).ready(function(event) {
 
     function swipetohome(){
       // The function above will only be called when not on the home page
-      $(document).on("swipeleft", function(event){
+      $(document).one("swipeleft", function(event){
         // alert("swipe left happened");
-        _.once($("#sparkhome").click());
+        $("#sparkhome").click();
         // alert("clicked sparkhome");
         event.stopImmediatePropagation();
       });
-      $(document).on("swiperight", function(event){
+      $(document).one("swiperight", function(event){
         // alert("swipe right happened");
-        _.once($("#dashhome").click());
+        $("#dashhome").click();
         // alert("clicked on dashhome");
         event.stopImmediatePropagation();
       });
