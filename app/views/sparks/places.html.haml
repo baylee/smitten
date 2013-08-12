@@ -12,7 +12,7 @@
             / remind them to add a message
             - if spark.user_id == current_user.id && spark.content.nil?
               %li= link_to 'Your spark here needs a message', spark_path(spark)
-            / otherwise show a link to the spark
+              / otherwise show a link to the spark
             - else
               - if !spark.content.nil?
                 %li= link_to truncate(spark.content), spark_path(spark.id)
