@@ -9,32 +9,32 @@ $( document ).ready(function(event) {
     function homeswipeoptions(){
       // The function above will only be called when on the rootpage
       $("div").on( "swipeleft", function(event) {
-        event.stopImmediatePropagation();
         // alert("swipe left happened");
         _.once($("#swipeleft").click());
         // alert("clicked on swipe left");
+        event.stopImmediatePropagation();
         });
       $("div").on( "swiperight", function(event) {
-        event.stopImmediatePropagation();
         // alert("swipe right happened");
         _.once($("#swiperight").click());
         // alert("clicked on swipe right");
+        event.stopImmediatePropagation();
         });
     }//end of homeswipe function
 
     function swipetohome(){
       // The function above will only be called when not on the home page
       $(document).on("swipeleft", function(event){
-        event.stopImmediatePropagation();
         // alert("swipe left happened");
         _.once($("#sparkhome").click());
         // alert("clicked sparkhome");
+        event.stopImmediatePropagation();
       });
       $(document).on("swiperight", function(event){
-        event.stopImmediatePropagation();
         // alert("swipe right happened");
         _.once($("#dashhome").click());
         // alert("clicked on dashhome");
+        event.stopImmediatePropagation();
       });
     }
 
