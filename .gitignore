@@ -15,4 +15,6 @@
 /tmp
 
 .env
-*/.orig
+*/*.orig
+.DS_Store
+*/.DS_Store
