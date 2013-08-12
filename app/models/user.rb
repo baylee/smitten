@@ -164,7 +164,7 @@ class User < ActiveRecord::Base
     nearby_sparks.flatten!
 
     # This gets rid of any sparks that don't have content
-    nearby_sparks = nearby_sparks.select { |spark| spark.content != nil }
+    nearby_sparks = nearby_sparks.select { |spark| !spark.content.blank? }
 
     # Since sparks may have been added more than once (e.g., if you were close to the same
     # spark twice), we filter for unique
