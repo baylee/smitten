@@ -1,4 +1,4 @@
-#accordion
+#accordion{:"data-role" => 'collapsible-set', :"data-theme" => 'c' }
   - @my_locations.each do |location|
     %h3= "#{location[0]}, #{location[1]}, #{location[2].advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')}"
     %div
