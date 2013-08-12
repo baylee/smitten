@@ -36,29 +36,32 @@ class User < ActiveRecord::Base
 	#   end
 	# end
 
+  # Hides the password form fields if there is an omniauth provider
 	def password_required?
 	  super && services.first.provider.blank?
 	end
 
-	def update_with_password(params, *options)
+	# Allows user to update their data even if they don't have a password, e.g.,
+  # in the case of a user who only authenticated with omniauth
+  def update_with_password(params, *options)
 	  if encrypted_password.blank?
 	    update_attributes(params, *options)
 	  else
 	    super
 	  end
-	end
+  end
 
   def facebook
     @facebook ||= Koala::Facebook::API.new(services.first.oauth_token)
     block_given? ? yield(@facebook) : @facebook
-  rescue Koala::Facebook::APIError => e
-    logger.info e.to_s
-    nil # or consider a custom null object
-  end
-  def friends_count
-    facebook { |fb| fb.get_connection("me", "friends").size }
+
+    rescue Koala::Facebook::APIError => e
+      logger.info e.to_s
+      nil # or consider a custom null object
   end
 
+  # returns an array of all the messages a user has had with a given other user,
+  # the conversation partner
   def all_messages(conversation_partner)
     @messages = []
     sent_messages = self.sent_messages.where('receiver_id = ?', conversation_partner.id)
@@ -75,6 +78,7 @@ class User < ActiveRecord::Base
     @messages
   end
 
+  # returns true if the user has received any messages from the convo partner, false otherwise
   def received_message_from_partner?(conversation_partner)
     x = false
     self.received_messages.each do |message|
@@ -85,6 +89,8 @@ class User < ActiveRecord::Base
     x
   end
 
+  # if a user has received messages from the conversation partner, the user will see
+  # convo partner's email, else they will see "anonymous"
   def anonymized_name(conversation_partner)
     if self.received_message_from_partner?(conversation_partner)
       conversation_partner.email
@@ -93,6 +99,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  # returns an array of all the places a user has been, including:
+  # - facebook checkins
+  # - sparks with or without notes
+  # - sparks with or without location_only set to true
   def places_ive_been
     locations_latlong = []
     # For each post on FB, if there is a location attached, then put the lat and lon of
@@ -116,14 +126,21 @@ class User < ActiveRecord::Base
     nearby_sparks = []
     near_a_location = []
 
+    # get all the sparks near location
     near_a_location << Spark.near([location[0], location[1]], 0.5)
     near_a_location.flatten!
-    # nearby_sparks << near_a_location
-    nearby_sparks << near_a_location.select { |spark| spark.created_at >= (location[2] - 3600) && spark.created_at <= (location[2] + 3600)}
+
+    # of those sparks near location, only select those that were created
+    # within an hour (before or after) of the time that user was at location
+    nearby_sparks << near_a_location.select { |spark|
+      spark.created_at >= (location[2] - 3600) && spark.created_at <= (location[2] + 3600)}
 
     # This gets rid of any nearby spark searches that returned nothing
     nearby_sparks.flatten!
+
+    # This excludes any sparks that were for location update purposes only
     nearby_sparks = nearby_sparks.select { |spark| spark.location_only == false }
+
     # Since sparks may have been added more than once (e.g., if you were close to the same
     # spark twice), we filter for unique
     nearby_sparks = nearby_sparks.uniq.sort {
@@ -145,7 +162,10 @@ class User < ActiveRecord::Base
 
     # This gets rid of any nearby spark searches that returned nothing
     nearby_sparks.flatten!
+
+    # This gets rid of any sparks that don't have content
     nearby_sparks = nearby_sparks.select { |spark| spark.content != nil }
+
     # Since sparks may have been added more than once (e.g., if you were close to the same
     # spark twice), we filter for unique
     nearby_sparks = nearby_sparks.uniq.sort {
