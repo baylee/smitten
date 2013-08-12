@@ -6,3 +6,5 @@
         = link_to truncate(x.content), spark_path(x.id)
         = x.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
         = x.user_id
+
+= will_paginate @nearby_sparks

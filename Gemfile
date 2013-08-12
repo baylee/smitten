@@ -13,6 +13,7 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'koala'
 gem 'geocoder'
+gem 'will_paginate'
 
 group :development do
   gem 'pry-rails'

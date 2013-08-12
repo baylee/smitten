@@ -3,6 +3,9 @@ class HomeController < ApplicationController
 
   def index
     @nearby_sparks = current_user.relevant_sparks
+    @nearby_sparks = WillPaginate::Collection.create(params[:page] || 1, 1, @nearby_sparks.length) do |pager|
+      pager.replace @nearby_sparks
+    end
   end
 
   def landing_page
