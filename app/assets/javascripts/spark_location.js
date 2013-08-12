@@ -8,13 +8,13 @@ $(document).ready(function() {
       } else {
         console.log("Your browser doesn't support geolocation.");
       }
-    };
+    }
 
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
-        send_data()
+        send_data();
       },
 
       function() {
@@ -34,12 +34,11 @@ $(document).ready(function() {
       $("#lat2").val(latitude);
       $("#lon2").val(longitude);
 
-      $("#geolocation_status").empty().append("<p>This spark will be associated with your current location - lat: " + latitude + ", long: " + longitude + "<p>")
+      $("#geolocation_status").empty().append("<p>This spark will be associated with your current location - lat: " + latitude + ", long: " + longitude + "<p>");
+    };
+  };
 
-    }
-  }
-
-  if ($('#geolocation_status').length != 0){
+  if ($('#geolocation_status').length !== 0){
     ask_for_geolocation();
   }
 
