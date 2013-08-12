@@ -1,5 +1,5 @@
 $ ->
-  create_location_only_spark = () ->
+  ask_for_geolocation = () ->
     handleNoGeolocation = (errorFlag) ->
       if (errorFlag)
         console.log("Geolocation service failed.")
@@ -12,7 +12,7 @@ $ ->
         # if success
         window.latitude = position.coords.latitude
         window.longitude = position.coords.longitude
-        send_ajax()
+        send_data()
       ,
       # if error
       () ->
@@ -22,16 +22,15 @@ $ ->
     else
       handleNoGeolocation(false)
 
-    # once the geolocation succeeds, send the latitude and longitude
-    send_ajax = ->
-      spark_data =
-        latitude: window.latitude
-        longitude: window.longitude
+    # Add geolocated lat and long to the hidden form fields for new spark
+    send_data = () ->
+      $("#lat").val(latitude)
+      $("#lon").val(longitude)
+      # the following are for the "drop a pin" button
+      $("#lat2").val(latitude)
+      $("#lon2").val(longitude)
 
-      $.ajax
-        dataType: "script"
-        url: "/update_location"
-        method: "POST"
-        data: spark_data
+      $("#geolocation_status").empty().append("<p>This spark will be associated with your current location - lat: " + latitude + ", long: " + longitude + "<p>")
 
-  $('#update_location').on("click", create_location_only_spark)
+  if $('#geolocation_status').length != 0
+    ask_for_geolocation()
