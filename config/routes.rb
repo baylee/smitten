@@ -3,6 +3,7 @@ FinalProject::Application.routes.draw do
   get 'dashboard' => 'users#index', as: 'dashboard'
 
   get 'landing_page' => 'home#landing_page'
+  get 'desktop' => 'home#desktop', as: 'desktop'
 
   post 'update_location' => 'sparks#update_location', as: :update_location
   get "messages/:partner_id" => 'messages#show', as: :message
