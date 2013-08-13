@@ -1,9 +1,15 @@
-%h1 This spark occurred at:
-= @spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
+%h1= @spark.title
 
-%br
+%h2
+  This spark occurred at
+  = @spark.input_location
+%h5
+  at:
+  = @spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
 
-= @spark.content
+%p
+  Description:
+  = @spark.content
 
 %br
 
