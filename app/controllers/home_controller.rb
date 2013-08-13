@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
     # will_paginate is designed to work on models; this allows it to work on an array
     current_page = params[:page] || 1
-    per_page = 2
+    per_page = 20
     @nearby_sparks = WillPaginate::Collection.create(current_page, per_page, @nearby_sparks.length) do |pager|
       pager.replace @nearby_sparks[pager.offset, pager.per_page].to_a
     end
