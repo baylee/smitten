@@ -1,3 +1,7 @@
+#flagged_message
+- if Message.is_flagged_by_user?(@messages, current_user)
+  #already_flagged You have already flagged this spark
+
 %h1
   Your Conversation with
   = current_user.anonymized_name(@conversation_partner)
@@ -7,9 +11,6 @@
     = @conversation_partner.get_profile_name
   - else
     = image_tag '/assets/user_icon.png'
-
-
-#flagged_message
 
 #new_message_container
   = render 'form'

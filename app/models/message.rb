@@ -15,4 +15,17 @@ class Message < ActiveRecord::Base
       end
     end
   end
+
+  def self.is_flagged_by_user?(message_array, user)
+    x = false
+    message_array.each do |message|
+      message.flags.each do |flag|
+        if flag.flagger_id == user.id
+          x = true
+        end
+      end
+    end
+    x
+  end
+
 end

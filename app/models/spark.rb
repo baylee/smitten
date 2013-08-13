@@ -8,4 +8,14 @@ class Spark < ActiveRecord::Base
   has_many :flags, as: :flaggable
 
   reverse_geocoded_by :latitude, :longitude
+
+  def is_flagged_by_user?(user)
+    x = false
+    self.flags.each do |flag|
+      if flag.flagger_id == user.id
+        x = true
+      end
+    end
+    x
+  end
 end
