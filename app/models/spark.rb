@@ -1,5 +1,5 @@
 class Spark < ActiveRecord::Base
-  attr_accessible :content, :latitude, :longitude, :user_id, :location_only
+  attr_accessible :title, :content, :input_location, :latitude, :longitude, :user_id, :location_only
 
   validates_presence_of :latitude, :longitude
 
