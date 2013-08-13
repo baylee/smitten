@@ -1,0 +1,1 @@
+$('#flagged').html('You flagged this conversation. You will not see any new messages.')

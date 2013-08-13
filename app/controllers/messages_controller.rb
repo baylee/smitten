@@ -30,7 +30,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = current_user.sent_messages.create(params[:message])
+    @message = current_user.sent_messages.build(params[:message])
 
     respond_to do |format|
       if @message.save

@@ -6,4 +6,8 @@ class Message < ActiveRecord::Base
 
   has_many :flags, as: :flaggable
 
+  validate :sender_not_flagged
+
+  def sender_not_flagged
+  end
 end
