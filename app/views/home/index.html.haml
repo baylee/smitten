@@ -1,12 +1,14 @@
 / Remember if you are going to update this page, also update the ajax partial
 #homepage
-  %h1 Welcome to the Feed!
-  / = render "layouts/header"
+  %section.bck.light.text.padding.center
+    .row.text.book.padding
+      %h1 Welcome to the Feed!
+      / = render "layouts/header"
 
-  %button{:id => "update_location"} Update sparks near you.
+      %button{:id => "update_location"} Update sparks near you.
 
-  %h4 All sparks near your past locations:
-  #spark_feed
-    = render "spark_feed"
+      %h4 All sparks near your past locations:
+      #spark_feed
+        = render "spark_feed"
 
-  = will_paginate @nearby_sparks
+      = will_paginate @nearby_sparks

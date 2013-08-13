@@ -21,7 +21,6 @@
 
 body{
   margin-top: 80px auto;
-  border: 1px solid black;
   height:100%;
 
 }
@@ -70,9 +69,8 @@ left: 2px;
 #new_spark_div, #dashboard{
   display: none;
   position: absolute;
-  border: 2px solid;
   width: 100%;
-  margin-top: 40px;
+  border: 0px;
 }
 
 #new_spark_div {
@@ -112,6 +110,7 @@ color: white;
 #nav {
   position: fixed;
   width: 100%;
+  z-index: 100;
 }
 
 #nav span {
