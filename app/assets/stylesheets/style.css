@@ -92,7 +92,7 @@ left: 10px;
   margin-top: 40px;
 }
 
-/*#yieldwrapper{
-  display: block;
-  margin-top: 68px;
-}*/
+#user_icon img {
+  width: 50px;
+  height: 50px;
+}
