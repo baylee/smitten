@@ -122,6 +122,26 @@ class User < ActiveRecord::Base
     locations_latlong
   end
 
+  def places_ive_been_for_map
+    locations_latlong = []
+    # For each post on FB, if there is a location attached, then put the lat and lon of
+    # that location into an array, and push that array into locations_latlong
+    self.facebook.get_connection("me", "feed").each do |fb_post|
+      if !fb_post["place"].nil?
+        locations_latlong << [fb_post["place"]["location"]["latitude"], fb_post["place"]["location"]["longitude"], fb_post["place"]["name"]]
+      end
+    end
+
+    # Also push the location of the user's sparks into the locations_latlong array
+    # locations_latlong now holds all the locations a user has been
+    self.sparks.each do |spark|
+      locations_latlong << [spark.latitude, spark.longitude, spark.title.blank? ? "Untitled" : spark.title ]
+    end
+
+    locations_latlong
+  end
+
+
   def relevant_sparks_near_location(location)
     nearby_sparks = []
     near_a_location = []

@@ -10,6 +10,8 @@ FinalProject::Application.routes.draw do
   post "messages/:partner_id" => 'messages#create', as: :messages
   get "messages" => 'messages#index', as: :messages
 
+  get "map" => 'sparks#map', as: "map"
+
   match 'users/auth/:service/callback' => 'services#create'
   resources :services, :only => [:index, :create, :destroy]
   resources :sparks, :only => [:show, :new, :create, :edit, :update, :destroy]
