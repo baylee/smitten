@@ -1,0 +1,21 @@
+
+%h1 Make a new Spark
+#geolocation_status
+  / The following will be auto updated by the spark_location.js if coords are found.
+  %p NOTE: You must first "accept" the geolocation settings to post a spark
+
+
+= form_for @spark, :method => "post" do |f|
+  = f.text_area :content, :id => "content"
+  = f.hidden_field :user_id, :value => current_user.id
+  = f.hidden_field :latitude,  :id => "lat"
+  = f.hidden_field :longitude, :id => "lon"
+  = f.submit
+
+%h1 Or, drop a pin, and return later to complete your Spark
+
+= form_for @spark, :method => "post" do |f|
+  = f.hidden_field :user_id, :value => current_user.id
+  = f.hidden_field :latitude,  :id => "lat2"
+  = f.hidden_field :longitude, :id => "lon2"
+  = f.submit "Drop a Pin"
