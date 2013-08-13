@@ -4,7 +4,7 @@
   %p NOTE: You must first "accept" the geolocation settings to post a spark
 
 
-= form_for @spark, :method => "post", :remote => false do |f|
+= form_for @spark, :method => "post" do |f|
   = f.label :title
   = f.text_field :title, :id => "title", :placeholder => "I fell for you...."
   = f.label :input_location, "Location of Spark"
