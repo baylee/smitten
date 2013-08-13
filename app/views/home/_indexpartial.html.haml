@@ -2,7 +2,10 @@
   %h1 Welcome to the Feed!
   = render "layouts/header"
 
-  %button{:id => "update_location", :data => {:theme => "b", :role => "button"}} Update sparks near you.
+  %button{:id => "update_location"} Update sparks near you.
 
+  %h4 All sparks near your past locations:
   #spark_feed
     = render "spark_feed"
+
+  = will_paginate @nearby_sparks

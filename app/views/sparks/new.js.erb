@@ -1,10 +1,10 @@
-alert("Going to sparks/new")
 var new_spark = $("#new_spark_div")
 var homepage = $("#homepage")
 var dashboard = $("#dashboard")
 new_spark.empty().html("<%= j render 'sparksnew' %>")
 new_spark.css('display', 'block');
 homepage.hide();
+homepage.css('left', '100%');
 dashboard.removeAttr("style")
 new_spark.css('zindex', '1000')
 new_spark.animate({
@@ -46,4 +46,5 @@ $(function() {
   if ($('#geolocation_status').length !== 0) {
     return ask_for_geolocation();
   }
+
 });
