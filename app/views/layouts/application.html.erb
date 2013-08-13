@@ -12,26 +12,21 @@
 </head>
 <body id ="body">
   <% if !current_user.nil? %>
-
     <section class="bck alert" id ="nav">
-
-            <div class="row text center">
-
-                <nav data-tuktuk="menu" class="column_12 text center bold">
-                    <%= link_to new_spark_path, :remote => true, :id => "sparkbutton", :class => "left"  do %>
-                    <span class="icon heart">
-                    <% end %>
-                    <%= link_to root_path, :remote => true, :id => "homebutton" do %>
-                    <h3>Smitten</h3>
-                    <% end %>
-                    <%= link_to dashboard_path, :remote => true, :id => "dashbutton", :class => "right" do %>
-                    <span class="icon grid-large"></span>
-                    <% end %>
-
-
-                </nav>
-            </div>
-        </section>
+      <div class="row text center">
+        <nav data-tuktuk="menu" class="column_12 text center bold">
+          <%= link_to new_spark_path, :remote => true, :id => "sparkbutton", :class => "left"  do %>
+            <span class="icon heart">
+          <% end %>
+            <%= link_to root_path, :remote => true, :id => "homebutton" do %>
+              <h3>Smitten</h3>
+            <% end %>
+            <%= link_to dashboard_path, :remote => true, :id => "dashbutton", :class => "right" do %>
+              <span class="icon grid-large"></span>
+            <% end %>
+        </nav>
+      </div>
+    </section>
 
 
 
