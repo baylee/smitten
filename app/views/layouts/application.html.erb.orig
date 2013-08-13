@@ -3,7 +3,10 @@
 <head>
   <title>Smitten</title>
   <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
+<<<<<<< HEAD
+=======
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+>>>>>>> 45199ba82e899049fa33135118786cd5217895f2
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,6 +14,10 @@
 
 </head>
 <body>
+<<<<<<< HEAD
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+=======
   <% if current_page?(root_path) %>
   <div id="header">
       <ul>
@@ -34,6 +41,7 @@
     <p class="alert"><%= alert %></p>
 
           <%= yield %>
+>>>>>>> 45199ba82e899049fa33135118786cd5217895f2
 
     <div id="new_spark_div"></div>
     <div id="dashboard"></div>

@@ -1,0 +1,8 @@
+#homepage
+  %h1 Welcome to the Feed!
+  = render "layouts/header"
+
+  %button{:id => "update_location", :data => {:theme => "b", :role => "button"}} Update sparks near you.
+
+  #spark_feed
+    = render "spark_feed"

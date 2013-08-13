@@ -3,7 +3,8 @@ class HomeController < ApplicationController
 
   def index
     @nearby_sparks = current_user.relevant_sparks
- 	@spark = Spark.new
+<<<<<<< HEAD
+
     # will_paginate is designed to work on models; this allows it to work on an array
     current_page = params[:page] || 1
     per_page = 20
@@ -15,6 +16,9 @@ class HomeController < ApplicationController
       format.html # index.html.erb
       format.js
    end
+=======
+    @spark = Spark.new
+>>>>>>> ajax_baby
   end
 
   def landing_page
