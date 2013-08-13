@@ -1,5 +1,6 @@
 - if !@nearby_sparks[0].nil?
   - @nearby_sparks.each do |spark|
+
     .spark
       - if !spark.title.blank?
         %h4
@@ -15,7 +16,7 @@
           = truncate(spark.input_location)
           )
           = spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
-      %p
+      %h5
         "
         = spark.content
         "

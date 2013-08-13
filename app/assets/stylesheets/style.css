@@ -87,7 +87,8 @@ left: 2px;
 }
 
 #homepage{
-  /*margin-top: 40px;*/
+  margin-top: 20px;
+  height: 100%;
 }
 
 #user_icon img {
