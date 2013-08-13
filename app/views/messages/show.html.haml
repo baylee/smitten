@@ -1,28 +1,30 @@
-#flagged_message
-- if Message.is_flagged_by_user?(@messages, current_user)
-  #already_flagged You have already flagged this spark
+%section.bck.padding.light.text.center
+  .row.text.book
+    #flagged_message
+    - if Message.is_flagged_by_user?(@messages, current_user)
+      #already_flagged You have already flagged this spark
 
-%h1
-  Your Conversation with
-  = current_user.anonymized_name(@conversation_partner)
-#user_icon
-  - if current_user.received_message_from_partner?(@conversation_partner)
-    = image_tag @conversation_partner.get_profile_photo_url
-    = @conversation_partner.get_profile_name
-  - else
-    = image_tag '/assets/user_icon.png'
+    %h1 Your Conversation with
+    %h3
+      = current_user.anonymized_name(@conversation_partner)
+    #user_icon
+      - if current_user.received_message_from_partner?(@conversation_partner)
+        = image_tag @conversation_partner.get_profile_photo_url
+        = @conversation_partner.get_profile_name
+      - else
+        = image_tag '/assets/user_icon.png'
 
-#new_message_container
-  = render 'form'
 
-#messages_container
-  = render 'messages'
+    = render 'form'
 
-= link_to('Flag this conversation', '#', html_options = {id: 'flag_link'})
 
-= form_for Flag.new, remote: true do |f|
-  = f.label :reason, 'Reason for this flag:'
-  = f.text_area :reason
-  = f.hidden_field :flaggable_type, value: 'Message'
-  = f.hidden_field :sender_id, value: @conversation_partner.id
-  = f.submit "Save", data: { confirm: "Are you sure? This will block you from receiving future messages from #{current_user.anonymized_name(@conversation_partner)}. You will not be able to undo this action." }
+    = render 'messages'
+
+    = link_to('Flag this conversation', '#', html_options = {id: 'flag_link'})
+
+    = form_for Flag.new, remote: true do |f|
+      = f.label :reason, 'Reason for this flag:'
+      = f.text_area :reason
+      = f.hidden_field :flaggable_type, value: 'Message'
+      = f.hidden_field :sender_id, value: @conversation_partner.id
+      = f.submit "Save", data: { confirm: "Are you sure? This will block you from receiving future messages from #{current_user.anonymized_name(@conversation_partner)}. You will not be able to undo this action." }

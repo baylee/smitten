@@ -1,26 +1,28 @@
 / Remember if you are going to update this page, also update the ajax partial
-%h1.padding Make a new Spark
-#geolocation_status.theme.text.normal.bold
-  / The following will be auto updated by the spark_location.js if coords are found.
-  %p.bck.theme.text.white.bold NOTE: You must first "accept" the geolocation settings to post a spark
+%section.bck.light.text.center
+  .row.text.book
+    %h1.padding Make a new Spark
+    #geolocation_status.theme.text.normal.bold
+      / The following will be auto updated by the spark_location.js if coords are found.
+      %p.bck.theme.text.white.bold NOTE: You must first "accept" the geolocation settings to post a spark
 
 
-= form_for @spark, :method => "post" do |f|
-  = f.label :title
-  = f.text_field :title, :id => "title", :placeholder => "I fell for you...."
-  = f.label :input_location, "Location of Spark"
-  = f.text_field :input_location, :id => "input_location", :placeholder => "The Hattery, SOMA, etc...."
-  = f.label :content, "Spark Description"
-  = f.text_area :content, :id => "content", :placeholder => "I almost tripped over my charger to hold the door for you...."
-  = f.hidden_field :user_id, :value => current_user.id
-  = f.hidden_field :latitude,  :id => "lat"
-  = f.hidden_field :longitude, :id => "lon"
-  = f.submit "Submit", :class => "button anchor alert"
+    = form_for @spark, :method => "post" do |f|
+      = f.label :title
+      = f.text_field :title, :id => "title", :placeholder => "I fell for you...."
+      = f.label :input_location, "Location of Spark"
+      = f.text_field :input_location, :id => "input_location", :placeholder => "The Hattery, SOMA, etc...."
+      = f.label :content, "Spark Description"
+      = f.text_area :content, :id => "content", :placeholder => "I almost tripped over my charger to hold the door for you...."
+      = f.hidden_field :user_id, :value => current_user.id
+      = f.hidden_field :latitude,  :id => "lat"
+      = f.hidden_field :longitude, :id => "lon"
+      = f.submit "Submit", :class => "button anchor alert"
 
-%h3.padding Or, drop a pin, and return later to complete your Spark!
+    %h3.padding Or, drop a pin, and return later to complete your Spark!
 
-= form_for @spark, :method => "post" do |f|
-  = f.hidden_field :user_id, :value => current_user.id
-  = f.hidden_field :latitude,  :id => "lat2"
-  = f.hidden_field :longitude, :id => "lon2"
-  = f.submit "Drop a Pin", :class => "button anchor secondary"
+    = form_for @spark, :method => "post" do |f|
+      = f.hidden_field :user_id, :value => current_user.id
+      = f.hidden_field :latitude,  :id => "lat2"
+      = f.hidden_field :longitude, :id => "lon2"
+      = f.submit "Drop a Pin", :class => "button anchor secondary"

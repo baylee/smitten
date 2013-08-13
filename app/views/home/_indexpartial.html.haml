@@ -7,9 +7,9 @@
 
       %button{:id => "update_location"} Update Location!
       %hr
+      %section.bck.lightest
+        %h4.text.bold All sparks near your past locations:
+        #spark_feed
+          = render "spark_feed"
 
-      %h4.text.bold All sparks near your past locations:
-      #spark_feed
-        = render "spark_feed"
-
-      = will_paginate @nearby_sparks
+        = will_paginate @nearby_sparks
