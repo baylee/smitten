@@ -173,4 +173,12 @@ class User < ActiveRecord::Base
     }
   end
 
+  def get_profile_photo_url
+    self.facebook.get_picture(self.services.first.uid)
+  end
+
+  def get_profile_name
+    self.facebook.get_object(self.services.first.uid)["first_name"]
+  end
+
 end

@@ -11,8 +11,6 @@
 
   background-color: brown;
   text-align: center;
-
-
 }
 
 #header a {
@@ -65,4 +63,9 @@ left: 10px;
   position: absolute;
   top: 0;
   right: 10px;
+}
+
+#user_icon img {
+  width: 50px;
+  height: 50px;
 }
