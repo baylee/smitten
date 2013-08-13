@@ -1,0 +1,13 @@
+alert("going home")
+var new_spark = $("#new_spark")
+var homepage = $("#homepage")
+var dashboard = $("#dashboard")
+homepage.empty().html("<%= j render 'indexpartial' %>")
+homepage.css('display', 'block');
+new_spark.removeAttr("style")
+dashboard.removeAttr("style")
+home.css('zindex', '1000')
+home.animate({
+  top: "400px",
+  opacity: 1
+}, 500 );

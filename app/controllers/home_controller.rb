@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 
   def index
     @nearby_sparks = current_user.relevant_sparks
+    @spark = Spark.new
   end
 
   def landing_page

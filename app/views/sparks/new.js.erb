@@ -1,0 +1,13 @@
+alert("Going to sparks/new")
+var new_spark = $("#new_spark")
+var homepage = $("#homepage")
+var dashboard = $("#dashboard")
+new_spark.empty().html("<%= j render 'sparksnew' %>")
+new_spark.css('display', 'block');
+homepage.hide();
+dashboard.removeAttr("style")
+new_spark.css('zindex', '1000')
+new_spark.animate({
+  right: "0%",
+  opacity: 1
+}, 500 );
