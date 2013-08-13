@@ -21,6 +21,19 @@
         markers.addLayer(marker);
     }
 
+    var sparkPoints = <%= raw(@nearby_sparks_for_map) %>
+
+    for (var i = 0; i < sparkPoints.length; i++) {
+        var a = sparkPoints[i];
+        var title = a[2];
+        var marker = L.marker(new L.LatLng(a[0], a[1]), {
+            icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '5544FF'}),
+            title: title
+        });
+        marker.bindPopup(title);
+        markers.addLayer(marker);
+    }
+
     map.addLayer(markers);
 
 </script>

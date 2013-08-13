@@ -76,6 +76,7 @@ class SparksController < ApplicationController
 
   def map
     @my_locations = current_user.places_ive_been_for_map
+    @nearby_sparks_for_map = current_user.relevant_sparks_for_map
   end
 
 
