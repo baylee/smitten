@@ -52,8 +52,8 @@ body{
 
 .left {
 position: absolute;
-top: 0;
-left: 10px;
+top: 7px;
+left: 2px;
 }
 
 #header .left img {
@@ -63,8 +63,8 @@ left: 10px;
 
 .right {
   position: absolute;
-  top: 0;
-  right: 10px;
+  top: 7px;
+  right: 2px;
 }
 
 #new_spark_div, #dashboard{
@@ -89,10 +89,46 @@ left: 10px;
 }
 
 #homepage{
-  margin-top: 40px;
+  /*margin-top: 40px;*/
 }
 
 #user_icon img {
   width: 50px;
   height: 50px;
+}
+
+.column_ {
+margin-top: 0;
+}
+
+#nav a {
+color: white;
+}
+
+#nav a:hover{
+
+}
+
+#nav {
+  position: fixed;
+  width: 100%;
+}
+
+#nav span {
+  font-size: 22px;
+}
+
+#nav h3 {
+  margin-bottom: 10px;
+}
+
+#body {
+  background: rgb(26, 188, 156);
+}
+
+input[type='submit']
+{
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
 }

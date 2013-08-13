@@ -7,36 +7,38 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 </head>
-<body>
+<body id ="body">
   <% if !current_user.nil? %>
-    <% if current_page?(root_path) %>
-    <div id="header">
-        <ul>
-          <li class="left"><%= link_to image_tag("noun_project_2820.svg"), new_spark_path, :remote => true, :id => "sparkbutton" %></li>
-          <li><%= link_to "Smitten", root_path, :remote => true, :id => "homebutton" %></li>
-          <li class ="right"><%= link_to image_tag("noun_project_15348.svg"), dashboard_path, :remote => true, :id => "dashbutton" %></li>
-        </ul>
-     </div>
-    <% else %>
-    <div id="header">
-        <ul>
-          <li class="left"><%= link_to image_tag("noun_project_2820.svg"), new_spark_path, :id => "sparkbutton" %></li>
-          <li><%= link_to "Smitten", root_path, :id => "homebutton" %></li>
-          <li class ="right"><%= link_to image_tag("noun_project_15348.svg"), dashboard_path, :id => "dashbutton" %></li>
-        </ul>
-     </div>
-    <% end %>
-  <% end %>
 
+    <section class="bck alert" id ="nav">
+
+            <div class="row text center">
+
+                <nav data-tuktuk="menu" class="column_12 text center bold">
+
+                    <a href="#" class="left"><span class="icon heart"></span></a>
+                    <a href ="#"> <h3>Smitten</h3></a>
+                    <a href="#" class="right"><span class="icon grid-large"></span></a>
+
+                </nav>
+            </div>
+        </section>
+
+
+
+<% end %>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <div id="yieldwrapper">
+    <section class="bck light text padding center">
+            <div class="row text book">
           <%= yield %>
+
     </div>
+  </section>
     <div id="new_spark_div"></div>
     <div id="dashboard"></div>
 
