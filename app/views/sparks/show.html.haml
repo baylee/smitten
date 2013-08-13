@@ -1,13 +1,19 @@
-%h1 This spark occurred at:
-= @spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
+%h1= @spark.title
+
+%h2
+  This spark occurred at
+  = @spark.input_location
+%h5
+  at:
+  = @spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
+
+%p
+  Description:
+  = @spark.content
 
 %br
 
-= @spark.content
-
-%br
-
-= link_to "Back to your Profile", profile_path(current_user)
+= link_to "Back to your Profile", profile_path
 - if @spark.user_id == current_user.id
   = link_to 'Edit this spark', edit_spark_path(@spark.id)
 - else
