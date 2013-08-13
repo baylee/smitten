@@ -3,7 +3,6 @@
 <head>
   <title>Smitten</title>
   <link href='http://fonts.googleapis.com/css?family=Coustard' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -11,6 +10,7 @@
 
 </head>
 <body>
+  <% if current_page?(root_path) %>
   <div id="header">
       <ul>
         <li class="left"><%= link_to image_tag("noun_project_2820.svg"), new_spark_path, :remote => true, :id => "sparkbutton" %></li>
@@ -18,13 +18,23 @@
         <li class ="right"><%= link_to image_tag("noun_project_15348.svg"), dashboard_path, :remote => true, :id => "dashbutton" %></li>
       </ul>
    </div>
+  <% else %>
+  <div id="header">
+      <ul>
+        <li class="left"><%= link_to image_tag("noun_project_2820.svg"), new_spark_path, :id => "sparkbutton" %></li>
+        <li><%= link_to "Smitten", root_path, :id => "homebutton" %></li>
+        <li class ="right"><%= link_to image_tag("noun_project_15348.svg"), dashboard_path, :id => "dashbutton" %></li>
+      </ul>
+   </div>
+  <% end %>
+
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
           <%= yield %>
 
-    <div id="new_spark"></div>
+    <div id="new_spark_div"></div>
     <div id="dashboard"></div>
 
 

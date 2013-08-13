@@ -1,5 +1,5 @@
 $( document ).ready(function(event) {
-  $("#new_spark").swipe({
+  $("#new_spark_div").swipe({
     swipeLeft:function(event, direction, distance, duration, fingerCount) {
       $("#homebutton").click();
     }
