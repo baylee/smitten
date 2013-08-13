@@ -1,4 +1,6 @@
 FinalProject::Application.routes.draw do
+  resources :flags, only: [:new, :create]
+
   get 'profile' => 'users#show', as: 'profile'
   get 'dashboard' => 'users#index', as: 'dashboard'
 

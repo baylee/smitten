@@ -12,6 +12,9 @@ class MessagesController < ApplicationController
     end
 
     @message_partners = @message_partners.uniq{ |partner| partner }
+
+    # Takes nil values out of the array
+    @message_partners.compact!
   end
 
   def show

@@ -7,3 +7,11 @@
 
 #messages_container
   = render 'messages'
+
+= link_to('Flag this conversation', nil, html_options = {id: 'flag_link'})
+= form_for Flag.new, remote: true do |f|
+  = f.label :reason, 'Reason for this flag:'
+  = f.text_area :reason
+  = f.hidden_field :flaggable_type, value: 'message'
+  = f.hidden_field :flaggable_id, value: @messages[0] ? @messages[0].id : nil
+  = f.submit "Save", data: { confirm: "Are you sure? This will block you from receiving future messages from #{current_user.anonymized_name(@conversation_partner)}" }
