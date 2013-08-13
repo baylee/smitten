@@ -1,0 +1,41 @@
+<div id='map'></div>
+
+<script type='text/javascript'>
+    var map = L.mapbox.map('map', 'examples.map-uci7ul8p')
+        // map.addLayer(L.tileLayer('http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'));
+        map.setView([-37.82, 175.215], 14);
+        // [<%#= @destination.latitude %>, <%#= @destination.longitude %>], 6
+
+    var markers = new L.MarkerClusterGroup();
+
+    var addressPoints = <%= raw(@my_locations) %>
+
+    for (var i = 0; i < addressPoints.length; i++) {
+        var a = addressPoints[i];
+        var title = a[2];
+        var marker = L.marker(new L.LatLng(a[0], a[1]), {
+            icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '0044FF'}),
+            title: title
+        });
+        marker.bindPopup(title);
+        markers.addLayer(marker);
+    }
+
+    var sparkPoints = <%= raw(@nearby_sparks_for_map) %>
+
+    for (var i = 0; i < sparkPoints.length; i++) {
+        var a = sparkPoints[i];
+        var title = a[2];
+        var marker = L.marker(new L.LatLng(a[0], a[1]), {
+            icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '5544FF'}),
+            title: title
+        });
+        marker.bindPopup(title);
+        markers.addLayer(marker);
+    }
+
+    map.addLayer(markers);
+
+</script>
+
+

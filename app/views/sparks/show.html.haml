@@ -1,3 +1,7 @@
+#flagged_spark
+  - if @spark.is_flagged_by_user?(current_user)
+    #already_flagged You have already flagged this spark
+
 %h1= @spark.title
 
 %h2
@@ -18,3 +22,12 @@
   = link_to 'Edit this spark', edit_spark_path(@spark.id)
 - else
   = link_to 'Message this user', message_path(@spark.user_id)
+
+= link_to('Flag this spark', '#', html_options = {id: 'flag_link'})
+
+= form_for Flag.new, remote: true do |f|
+  = f.label :reason, 'Reason for this flag:'
+  = f.text_area :reason
+  = f.hidden_field :flaggable_type, value: 'Spark'
+  = f.hidden_field :flagged_id, value: @spark.id
+  = f.submit "Save", data: { confirm: "Are you sure? You will not be able to undo this action." }

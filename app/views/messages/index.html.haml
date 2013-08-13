@@ -1,7 +1,10 @@
 %h2 Inbox of Messages
-%table
-  %tr
-    %th Partner
-  - @message_partners.each do |partner|
+- if !@message_partners.empty?
+  %table
     %tr
-      %td= link_to partner.email, message_path(partner.id)
+      %th Partner
+    - @message_partners.each do |partner|
+      %tr
+        %td= link_to partner.email, message_path(partner.id)
+- else
+  %p You don't have any messages yet

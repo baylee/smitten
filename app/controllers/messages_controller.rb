@@ -12,6 +12,9 @@ class MessagesController < ApplicationController
     end
 
     @message_partners = @message_partners.uniq{ |partner| partner }
+
+    # Takes nil values out of the array
+    @message_partners.compact!
   end
 
   def show
@@ -27,7 +30,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = current_user.sent_messages.create(params[:message])
+    @message = current_user.sent_messages.build(params[:message])
 
     respond_to do |format|
       if @message.save

@@ -1,4 +1,6 @@
 FinalProject::Application.routes.draw do
+  resources :flags, only: [:new, :create]
+
   get 'profile' => 'users#show', as: 'profile'
   get 'dashboard' => 'users#index', as: 'dashboard'
 
@@ -9,6 +11,8 @@ FinalProject::Application.routes.draw do
   get "messages/:partner_id" => 'messages#show', as: :message
   post "messages/:partner_id" => 'messages#create', as: :messages
   get "messages" => 'messages#index', as: :messages
+
+  get "map" => 'sparks#map', as: "map"
 
   match 'users/auth/:service/callback' => 'services#create'
   resources :services, :only => [:index, :create, :destroy]

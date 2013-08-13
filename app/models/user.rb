@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
   has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
   has_many :sparks
+  has_many :flagged_messages, through: :sent_messages, source: :flags
+  has_many :flagged_sparks, through: :sparks, source: :flags
+  has_many :flags, foreign_key: 'flagger_id'
 
 
   # NOT NEEDED WHEN WE ARE ONLY ADDING USERS THROUGH FB
@@ -121,6 +124,58 @@ class User < ActiveRecord::Base
 
     locations_latlong
   end
+
+  def places_ive_been_for_map
+    locations_latlong = []
+    # For each post on FB, if there is a location attached, then put the lat and lon of
+    # that location into an array, and push that array into locations_latlong
+    self.facebook.get_connection("me", "feed").each do |fb_post|
+      if !fb_post["place"].nil?
+        locations_latlong << [fb_post["place"]["location"]["latitude"], fb_post["place"]["location"]["longitude"], fb_post["place"]["name"]]
+      end
+    end
+
+    # Also push the location of the user's sparks into the locations_latlong array
+    # locations_latlong now holds all the locations a user has been
+    self.sparks.each do |spark|
+      locations_latlong << [spark.latitude, spark.longitude, spark.title.blank? ? "Untitled" : spark.title ]
+    end
+
+    locations_latlong
+  end
+
+  def relevant_sparks_for_map
+    locations_latlong = self.places_ive_been
+    nearby_sparks = []
+    sparks_for_map = []
+
+    # Find sparks within a time range around each location_latlong object
+    locations_latlong.each do |location|
+      near_a_location = []
+      near_a_location << Spark.near([location[0], location[1]], 0.5)
+      near_a_location.flatten!
+      nearby_sparks << near_a_location.select { |spark| spark.created_at >= (location[2] - 3600) && spark.created_at <= (location[2] + 3600)}
+    end
+
+    # This gets rid of any nearby spark searches that returned nothing
+    nearby_sparks.flatten!
+
+    # This gets rid of any sparks that don't have content
+    nearby_sparks = nearby_sparks.select { |spark| !spark.content.blank? }
+
+    # Since sparks may have been added more than once (e.g., if you were close to the same
+    # spark twice), we filter for unique
+    nearby_sparks = nearby_sparks.uniq.sort {
+      |a,b| b.created_at <=> a.updated_at
+    }
+
+    nearby_sparks.each do |spark|
+      sparks_for_map << [spark.latitude, spark.longitude, spark.title.blank? ? "Untitled" : spark.title ]
+    end
+
+    sparks_for_map
+  end
+
 
   def relevant_sparks_near_location(location)
     nearby_sparks = []
