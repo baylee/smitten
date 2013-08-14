@@ -1,13 +1,11 @@
 %section.bck.light.text.center
   .row.text.book
-
-    =current_user.email
     %th= current_user.anonymized_name(@conversation_partner)
-    %th Sent at
 
     - @messages.each do |message|
       %hr
-        %p.text.bold
-        = current_user.id == message.sender_id ? message.content : ""
-        %p= current_user.id == message.receiver_id ? message.content : ""
+        - if current_user.id == message.sender_id
+          %h4.text.right.color.theme.bold.padding=  message.content
+        - else
+          %h4.text.left.bold.padding= message.content
         %p= message.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
