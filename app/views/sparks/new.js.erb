@@ -1,11 +1,13 @@
 var new_spark = $("#new_spark_div")
 var homepage = $("#homepage")
 var dashboard = $("#dashboard")
+var other_pages = $("#other_pages")
 var mainwrapper = $("#mainwrapper")
 
+other_pages.empty().removeAttr("style");
 homepage.empty().removeAttr("style");
 dashboard.empty().removeAttr("style");
-new_spark.empty().html("<%= j render 'sparksnew' %>")
+new_spark.empty().removeAttr("style").html("<%= j render '/sparks/sparksnew' %>")
 
 new_spark.css('display', 'block');
 new_spark.css("right", "0%");
@@ -13,6 +15,7 @@ new_spark.css("right", "0%");
 homepage.html("<%= j render 'home/indexpartial' %>")
   $("#homepage").hide();
 $("#homepage").css('left', '100%');
+$("#homepage").css('display', 'none');
 
 
 
