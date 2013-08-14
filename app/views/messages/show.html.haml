@@ -11,10 +11,7 @@
       - else
         = image_tag '/assets/user_icon.png'
 
-    - if current_user.received_message_from_partner?(@conversation_partner)
-      %h4.text.bold= @conversation_partner.get_profile_name
-    - else
-      %h6= current_user.anonymized_name(@conversation_partner)
+    %h4.text.bold= current_user.anonymized_name(@conversation_partner)
 
     = render 'form'
 
