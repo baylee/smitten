@@ -5,19 +5,22 @@ $( document ).ready(function(event) {
   var sparkbutton = $("#sparkbutton");
   var dashbutton =  $("#dashbutton");
   var mainwrapper = $("#mainwrapper");
-  var new_spark = $("#new_spark_div")
-  var homepage = $("#homepage")
-  var dashboard = $("#dashboard")
+  var new_spark = $("#new_spark_div");
+  var homepage = $("#homepage");
+  var dashboard = $("#dashboard");
 
   new_spark.swipe({
     swipeLeft:function(event, direction, distance, duration, fingerCount) {
+
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
+      $("#homepage").css('left', '100%');
       dashboard.removeAttr("style");
       new_spark.animate({
         right:'100%',
         opacity: 1
       },{ duration: 500, queue: false});
+      $('#homepage').css("display", "block");
       $('#homepage').animate({
         left: "0%",
         opacity: 1
@@ -36,6 +39,7 @@ $( document ).ready(function(event) {
           left:'100%',
           opacity: 1
         },{ duration: 500, queue: false});
+        $('#homepage').css("display", "block");
         $('#homepage').animate({
           right: "0%",
           opacity: 1

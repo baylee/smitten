@@ -3,17 +3,17 @@ var homepage = $("#homepage")
 var dashboard = $("#dashboard")
 var mainwrapper = $("#mainwrapper")
 
-// mainwrapper.empty();
+homepage.empty().removeAttr("style");
+dashboard.empty().removeAttr("style");
 new_spark.empty().html("<%= j render 'sparksnew' %>")
+
 new_spark.css('display', 'block');
-homepage.hide();
-homepage.css('left', '100%');
-dashboard.removeAttr("style")
-new_spark.css('zindex', '1000')
-new_spark.animate({
-  right: "0%",
-  opacity: 1
-}, 500 );
+new_spark.css("right", "0%");
+
+homepage.html("<%= j render 'home/indexpartial' %>")
+  $("#homepage").hide();
+$("#homepage").css('left', '100%');
+
 
 
 $(function() {
