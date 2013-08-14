@@ -20,7 +20,11 @@
 
     = render 'messages'
     %hr
-    = link_to('Flag this conversation', '#', html_options = {id: 'flag_link', :class => "button anchor secondary"})
+    / = link_to('Flag this conversation', '#', html_options = {id: 'flag_link', :class => "button anchor secondary"})
+    %a#flag_link.button.secondary
+      %span.icon.flag
+      %span Flag this conversation
+
 
     = form_for Flag.new, remote: true do |f|
       = f.label :reason, 'Reason for this flag:'
