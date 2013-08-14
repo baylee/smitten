@@ -8,9 +8,9 @@
 
       %hr
       %section.bck.lightest
-        %h4.text.color.theme.bold All sparks near your past locations:
+        %h4.text.bold All sparks near your past locations:
         %hr
-        #spark_feed
+        #spark_feed.bck.lightest
           = render "spark_feed"
 
         = will_paginate @nearby_sparks
