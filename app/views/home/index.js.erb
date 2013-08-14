@@ -1,4 +1,27 @@
-// alert('clicked to go home')
-// var mainwrapper = $('mainwrapper')
+var mainwrapper = $('#mainwrapper')
+var dashboard = $('#dashboard')
+var new_spark = $("#new_spark_div")
 
-// mainwrapper.empty().html("<%= j render 'indexpartial %>");
+dashboard.removeAttr('style')
+new_spark.removeAttr('style')
+mainwrapper.empty().html("<%= j render 'indexpartial' %>");
+//This is for the swipe events on the home page, dashboard, and new spark page
+
+$( document ).ready(function(event) {
+  var homepage = $("#homepage")
+
+  homepage.swipe({
+    swipe:function(event, direction, distance, duration, fingerCount) {
+      homepage.removeAttr('style');
+      if (direction === "right"){
+        $.getScript("swipe_to_spark");
+
+      }
+      if(direction === "left"){
+        $.getScript("swipe_to_dash");
+      }
+    },
+      allowPageScroll:"auto"
+      //here we are on the homepage, we can either go left or right, allow page scroll lets you do the normal stuff with up and down
+  });
+});

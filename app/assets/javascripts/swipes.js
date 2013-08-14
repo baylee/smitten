@@ -18,7 +18,7 @@ $( document ).ready(function(event) {
         right:'100%',
         opacity: 1
       },{ duration: 500, queue: false});
-      homepage.animate({
+      $('#homepage').animate({
         left: "0%",
         opacity: 1
       }, { duration: 500, queue: false});
@@ -30,15 +30,19 @@ $( document ).ready(function(event) {
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
       new_spark.removeAttr("style");
-      dashboard.animate({
-        left:'100%',
-        opacity: 1
-      },{ duration: 500, queue: false});
 
-      homepage.animate({
-        right: "0%",
-        opacity: 1
-      }, { duration: 500, queue: false} );
+      var backtohome = function(){
+        dashboard.animate({
+          left:'100%',
+          opacity: 1
+        },{ duration: 500, queue: false});
+        console.log(homepage);
+        $('#homepage').animate({
+          right: "0%",
+          opacity: 1
+        }, { duration: 500, queue: false});
+      };
+      backtohome();
     }
   });
   homepage.swipe({
