@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :authenticate_user!, :except => [:landing_page, :desktop]
+  skip_before_filter :authenticate_user!, only: [:landing_page, :desktop]
 
   def index
     @nearby_sparks = current_user.relevant_sparks
