@@ -207,3 +207,7 @@ form{
 #messageindex tr a{
   font-size: 20px;
 }
+
+#mainwrapper{
+  padding-top: 50px;
+}
