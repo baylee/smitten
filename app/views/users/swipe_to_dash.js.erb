@@ -1,8 +1,14 @@
-var dashboard = $("#dashboard")
+var new_spark = $("#new_spark_div")
 var homepage = $("#homepage")
-var newspark = $('#new_spark_div')
-dashboard.empty().html("<%= j render 'dashboardpartial' %>")
-newspark.removeAttr("style");
+var dashboard = $("#dashboard")
+var other_pages = $("#other_pages")
+var mainwrapper = $("#mainwrapper")
+
+new_spark.empty().removeAttr("style");
+other_pages.empty().removeAttr("style");
+
+dashboard.empty().removeAttr("style").html("<%= j render 'dashboardpartial' %>")
+
 
 var smoothtrans = function(){
   dashboard.css('display', 'block');

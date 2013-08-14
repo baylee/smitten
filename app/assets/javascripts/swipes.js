@@ -1,13 +1,11 @@
 //This is for the swipe events on the home page, dashboard, and new spark page
 
 $( document ).ready(function(event) {
-  var homebutton =  $("#homebutton");
-  var sparkbutton = $("#sparkbutton");
-  var dashbutton =  $("#dashbutton");
   var mainwrapper = $("#mainwrapper");
   var new_spark = $("#new_spark_div");
   var homepage = $("#homepage");
   var dashboard = $("#dashboard");
+  var other_pages = $("#other_pages");
 
   new_spark.swipe({
     swipeLeft:function(event, direction, distance, duration, fingerCount) {
@@ -16,6 +14,7 @@ $( document ).ready(function(event) {
       homepage.css('width', '100%');
       $("#homepage").css('left', '100%');
       dashboard.removeAttr("style");
+
       new_spark.animate({
         right:'100%',
         opacity: 1
@@ -25,7 +24,6 @@ $( document ).ready(function(event) {
         left: "0%",
         opacity: 1
       }, { duration: 500, queue: false});
-      //when you swipe on the container div new_spark, click on the homebutton link
     }
   });
   dashboard.swipe({
@@ -34,18 +32,16 @@ $( document ).ready(function(event) {
       homepage.css('width', '100%');
       new_spark.removeAttr("style");
 
-      var backtohome = function(){
-        dashboard.animate({
-          left:'100%',
-          opacity: 1
-        },{ duration: 500, queue: false});
-        $('#homepage').css("display", "block");
-        $('#homepage').animate({
-          right: "0%",
-          opacity: 1
-        }, { duration: 500, queue: false});
-      };
-      backtohome();
+      dashboard.animate({
+        left:'100%',
+        opacity: 1
+      },{ duration: 500, queue: false});
+      $('#homepage').css("display", "block");
+      $('#homepage').animate({
+        right: "0%",
+        opacity: 1
+      }, { duration: 500, queue: false});
+      dashboard.empty().removeAttr("style");
     }
   });
   homepage.swipe({
