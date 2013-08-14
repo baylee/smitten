@@ -16,6 +16,9 @@ class HomeController < ApplicationController
    end
   end
 
+  def paginate
+  end
+
   def landing_page
     # ADD THIS BACK ONCE WE ARE READY TO START TESTING ON MOBILE ONLY!
 

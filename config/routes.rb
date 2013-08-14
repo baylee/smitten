@@ -25,7 +25,7 @@ FinalProject::Application.routes.draw do
   get ":page" => 'home#index'
 
   authenticated :user do
-    root :to => "home#index"
+    root :to => "home#paginate"
   end
 
   root :to => "home#landing_page"
