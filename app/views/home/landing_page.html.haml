@@ -8,10 +8,10 @@
           Smitten
         #landingheart.span.icon.heart
 
-      =link_to user_omniauth_authorize_path(:facebook) do
-        %span.icon.facebook-sign
-      %h5.color.theme.text.bold Sign in with Facebook
+      %hr
+        =link_to user_omniauth_authorize_path(:facebook), :class => 'button blue' do
+          %span.icon.facebook-sign
+          %span Sign in with Facebook
 
-
-
+    %hr
       =link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
