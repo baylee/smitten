@@ -43,7 +43,7 @@ $(function() {
       $("#lon").val(longitude);
       $("#lat2").val(latitude);
       $("#lon2").val(longitude);
-      return $("#geolocation_status").empty().append("<p>This spark will be associated with your current location - lat: " + latitude + ", long: " + longitude);
+      return $("#geolocation_status").empty().append();
     };
   };
   if ($('#geolocation_status').length !== 0) {
