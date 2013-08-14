@@ -234,6 +234,22 @@ font-weight: 600;
 
 #spark a {
   font-size: 22px;
-  color: rgb(26, 188, 156);
+  /*color: rgb(26, 188, 156);*/
   font-weight: 600;
+}
+
+#location {
+  color: rgb(26, 188, 156);
+}
+
+.sparkdatepadding{
+  padding-bottom: 10px;
+}
+
+.5pxpadding {
+  padding-bottom: 5px
+}
+
+#indextext {
+  color: rgb(231, 76, 60);
 }
