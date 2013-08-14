@@ -174,3 +174,8 @@ input[type='submit']
 #landingheart{
   color: #e74c3c;
 }
+
+#sparkshow{
+  padding-top: 40px;
+  background-color: rgb(236, 240, 241);
+}
