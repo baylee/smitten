@@ -3,7 +3,8 @@
 <script type='text/javascript'>
     var map = L.mapbox.map('map', 'examples.map-uci7ul8p')
         // map.addLayer(L.tileLayer('http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'));
-        map.setView([-37.82, 175.215], 14);
+        map.setZoom
+        // map.setView([-37.82, 175.215], 14);
         // [<%#= @destination.latitude %>, <%#= @destination.longitude %>], 6
 
     var markers = new L.MarkerClusterGroup();
@@ -27,14 +28,18 @@
         var a = sparkPoints[i];
         var title = a[2];
         var marker = L.marker(new L.LatLng(a[0], a[1]), {
-            icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '5544FF'}),
+            icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '5544AA'}),
             title: title
         });
         marker.bindPopup(title);
         markers.addLayer(marker);
     }
+    // zoom the map to fit the bounds of the markers:
+    setTimeout(function(){map.fitBounds(markers.getBounds())}, 500);
 
     map.addLayer(markers);
+
+
 
 </script>
 
