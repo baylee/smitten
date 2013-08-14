@@ -17,8 +17,9 @@
 
     = render 'form'
 
+    #messages_container
+      = render 'messages'
 
-    = render 'messages'
     %hr
     / = link_to('Flag this conversation', '#', html_options = {id: 'flag_link', :class => "button anchor secondary"})
     %a#flag_link.button.secondary
