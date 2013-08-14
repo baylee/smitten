@@ -79,5 +79,9 @@ class SparksController < ApplicationController
     @nearby_sparks_for_map = current_user.relevant_sparks_for_map
   end
 
+  def swipe_to_spark
+    @spark = Spark.new
+  end
+
 
 end

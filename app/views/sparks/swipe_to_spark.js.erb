@@ -1,0 +1,53 @@
+var new_spark = $("#new_spark_div")
+var homepage = $("#homepage")
+var dashboard = $("#dashboard")
+var mainwrapper = $("#mainwrapper")
+
+// mainwrapper.empty();
+new_spark.empty().html("<%= j render 'sparksnew' %>")
+new_spark.css('display', 'block');
+homepage.hide();
+homepage.css('left', '100%');
+dashboard.removeAttr("style")
+new_spark.css('zindex', '1000')
+new_spark.animate({
+  right: "0%",
+  opacity: 1
+}, 500 );
+
+
+$(function() {
+  var ask_for_geolocation;
+  ask_for_geolocation = function() {
+    var handleNoGeolocation, send_data;
+    handleNoGeolocation = function(errorFlag) {
+      if (errorFlag) {
+        return console.log("Geolocation service failed.");
+      } else {
+        return console.log("Your browser doesn't support geolocation.");
+      }
+    };
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        window.latitude = position.coords.latitude;
+        window.longitude = position.coords.longitude;
+        return send_data();
+      }, function() {
+        return handleNoGeolocation(true);
+      });
+    } else {
+      handleNoGeolocation(false);
+    }
+    return send_data = function() {
+      $("#lat").val(latitude);
+      $("#lon").val(longitude);
+      $("#lat2").val(latitude);
+      $("#lon2").val(longitude);
+      return $("#geolocation_status").empty().append("<p class='bck color'>This spark will be associated with your current location - lat: " + latitude + ", long: " + longitude);
+    };
+  };
+  if ($('#geolocation_status').length !== 0) {
+    return ask_for_geolocation();
+  }
+
+});

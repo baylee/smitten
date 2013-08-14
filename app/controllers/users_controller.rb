@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   def index
 
   end
+  def swipe_to_dash
 
+  end
   def show
     user_sparks = Spark.where(:user_id => current_user.id, :location_only => false)
 

@@ -44,11 +44,11 @@ $( document ).ready(function(event) {
   $("#homepage").swipe({
     swipe:function(event, direction, distance, duration, fingerCount) {
       if (direction === "right"){
-        $.getScript(sparkbutton.attr('href'));
+        $.getScript("swipe_to_spark");
 
       }
       if(direction === "left"){
-        $.getScript(dashbutton.attr('href'));
+        $.getScript("swipe_to_dash");
       }
     },
       allowPageScroll:"auto"

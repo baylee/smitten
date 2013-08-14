@@ -1,0 +1,12 @@
+var dashboard = $("#dashboard")
+var homepage = $("#homepage")
+var newspark = $('#new_spark_div')
+dashboard.empty().html("<%= j render 'dashboardpartial' %>")
+dashboard.css('display', 'block');
+homepage.hide();
+homepage.css('right', '100%');
+newspark.removeAttr("style");
+dashboard.animate({
+  left: "0%",
+  opacity: 1
+}, 500 );
