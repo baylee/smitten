@@ -203,6 +203,6 @@ form{
   color:  rgb(52, 73, 94);
 }
 
-#messageindex tr{
-  font-size: 12px;
+#messageindex tr a{
+  font-size: 20px;
 }
