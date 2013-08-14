@@ -5,22 +5,19 @@
 
     / need to add facebook picture url...
     #facebook_picture
+      = image_tag current_user.get_profile_photo_url
+
+    %h4.text.bold= current_user.get_profile_name
 
     %h2 Your Recent Notes
 
     %table
       %tr
-        %th Content
-        %th Created At
-        %th Latitude
-        %th Longitude
-        %th
+        %th Title
+        %th Location
+        %th Created
       - @user_sparks.each do |spark|
         %tr
-          %td= !spark.title.blank? ? spark.title : (link_to "(This spark needs a title)", spark_path(spark))
-          %td= !spark.input_location.blank? ? spark.input_location : (link_to "(This spark needs a location)", spark_path(spark))
-          %td= !spark.content.blank? ? spark.content : (link_to "(This spark needs a message)", spark_path(spark))
+          %td= !spark.title.blank? ? (link_to spark.title, spark_path(spark)) : (link_to "(Add title)", edit_spark_path(spark))
+          %td= !spark.input_location.blank? ? (link_to spark.input_location, spark_path(spark)) : (link_to "(Add location)", edit_spark_path(spark))
           %td= spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
-          %td= spark.latitude
-          %td= spark.longitude
-          %td= link_to "Delete", spark_path(spark), :data => { :confirm => "Are you sure?" }, :method => :delete
