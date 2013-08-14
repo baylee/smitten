@@ -36,7 +36,7 @@ $ ->
         method: "POST"
         data: spark_data
 
-  $('#update_location').on("click", create_location_only_spark)
+  $('body').on("click", "#update_location", create_location_only_spark)
 
 # --------------- End of updating location --------------------
 
