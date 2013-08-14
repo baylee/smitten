@@ -20,7 +20,7 @@
       %h5
         = @spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
 
-
+      %hr
 
       = link_to "Back to your Profile", profile_path
       - if @spark.user_id == current_user.id
@@ -36,4 +36,4 @@
         = f.text_area :reason
         = f.hidden_field :flaggable_type, value: 'Spark'
         = f.hidden_field :flagged_id, value: @spark.id
-        = f.submit "Save", data: { confirm: "Are you sure? You will not be able to undo this action." }
+        = f.submit "Flag this Spark", data: { confirm: "Are you sure? You will not be able to undo this action." }, :class => "button secondary"
