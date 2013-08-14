@@ -36,7 +36,6 @@ $( document ).ready(function(event) {
           left:'100%',
           opacity: 1
         },{ duration: 500, queue: false});
-        console.log(homepage);
         $('#homepage').animate({
           right: "0%",
           opacity: 1
