@@ -1,13 +1,15 @@
-%section.bck.light.text.padding.center
-  .row.text.book
-    #homepage.padding
-      %h1 Welcome to the Feed!
-      = render "layouts/header"
+#homepage
+  %section.bck.light.text.padding.center
+    .row.text.book.padding
 
-      %button{:id => "update_location"} Update sparks near you.
 
-      %h4 All sparks near your past locations:
-      #spark_feed
-        = render "spark_feed"
 
-      = will_paginate @nearby_sparks
+
+      %button{:id => "update_location"} Update Location!
+      %hr
+      %section.bck.lightest
+        %h4.text.bold All sparks near your past locations:
+        #spark_feed
+          = render "spark_feed"
+
+        = will_paginate @nearby_sparks

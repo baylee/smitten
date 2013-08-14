@@ -1,12 +1,11 @@
-%table
-  %tr
-    %th= current_user.email
+%section.bck.light.text.center
+  .row.text.book
     %th= current_user.anonymized_name(@conversation_partner)
-    %th Sent at
 
-  - @messages.each do |message|
-    %tr
-      %td= current_user.id == message.sender_id ? message.content : ""
-      %td= current_user.id == message.receiver_id ? message.content : ""
-      / for Pacific time....
-      %td= message.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
+    - @messages.each do |message|
+      %hr
+        - if current_user.id == message.sender_id
+          %h4.text.right.color.theme.bold.padding=  message.content
+        - else
+          %h4.text.left.bold.padding= message.content
+        %p= message.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
