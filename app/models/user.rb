@@ -131,14 +131,14 @@ class User < ActiveRecord::Base
     # that location into an array, and push that array into locations_latlong
     self.facebook.get_connection("me", "feed").each do |fb_post|
       if !fb_post["place"].nil?
-        locations_latlong << [fb_post["place"]["location"]["latitude"], fb_post["place"]["location"]["longitude"], fb_post["place"]["name"]]
+        locations_latlong << [fb_post["place"]["location"]["latitude"], fb_post["place"]["location"]["longitude"], fb_post["place"]["name"], Time.zone.parse(fb_post["created_time"]).wday]
       end
     end
 
     # Also push the location of the user's sparks into the locations_latlong array
     # locations_latlong now holds all the locations a user has been
     self.sparks.each do |spark|
-      locations_latlong << [spark.latitude, spark.longitude, spark.title.blank? ? "Untitled" : spark.title ]
+      locations_latlong << [spark.latitude, spark.longitude, spark.title.blank? ? "Untitled" : spark.title, spark.created_at.wday ]
     end
 
     locations_latlong
@@ -170,7 +170,7 @@ class User < ActiveRecord::Base
     }
 
     nearby_sparks.each do |spark|
-      sparks_for_map << [spark.latitude, spark.longitude, spark.title.blank? ? "Untitled" : spark.title ]
+      sparks_for_map << [spark.latitude, spark.longitude, spark.title.blank? ? "Untitled" : spark.title, spark.created_at.wday ]
     end
 
     sparks_for_map
