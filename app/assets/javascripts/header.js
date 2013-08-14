@@ -8,8 +8,8 @@
 //   var dashboard = $("#dashboard");
 
 //   homebutton.on('click', function(){
-//     $(this).next("div").hide();
-//     mainwrapper.removeAttr("style");
+//     mainwrapper.empty();
+//     $.getScript(homebutton.attr('href'));
 //   });
 
 

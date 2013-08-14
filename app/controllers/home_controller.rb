@@ -10,7 +10,6 @@ class HomeController < ApplicationController
     @nearby_sparks = WillPaginate::Collection.create(current_page, per_page, @nearby_sparks.length) do |pager|
       pager.replace @nearby_sparks[pager.offset, pager.per_page].to_a
     end
-
     respond_to do |format|
       format.html # index.html.erb
       format.js
