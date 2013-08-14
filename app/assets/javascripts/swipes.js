@@ -13,7 +13,8 @@ $( document ).ready(function(event) {
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
       $("#homepage").css('left', '100%');
-      dashboard.empty().removeAttr("style");
+      dashboard.removeAttr("style");
+
       new_spark.animate({
         right:'100%',
         opacity: 1
@@ -29,26 +30,23 @@ $( document ).ready(function(event) {
     swipeRight:function(event, direction, distance, duration, fingerCount) {
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
-      new_spark.empty().removeAttr("style");
+      new_spark.removeAttr("style");
 
-      var backtohome = function(){
-        dashboard.animate({
-          left:'100%',
-          opacity: 1
-        },{ duration: 500, queue: false});
-        $('#homepage').css("display", "block");
-        $('#homepage').animate({
-          right: "0%",
-          opacity: 1
-        }, { duration: 500, queue: false});
-      };
-      backtohome();
+      dashboard.animate({
+        left:'100%',
+        opacity: 1
+      },{ duration: 500, queue: false});
+      $('#homepage').css("display", "block");
+      $('#homepage').animate({
+        right: "0%",
+        opacity: 1
+      }, { duration: 500, queue: false});
       dashboard.empty().removeAttr("style");
     }
   });
   homepage.swipe({
     swipe:function(event, direction, distance, duration, fingerCount) {
-      homepage.empty().removeAttr('style');
+      homepage.removeAttr('style');
       if (direction === "right"){
         $.getScript("swipe_to_spark");
 
