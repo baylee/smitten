@@ -151,6 +151,10 @@ input[type='submit']
   opacity: 0.5;
 }
 
+.mypadding{
+  padding-bottom: 20px;
+}
+
 #map {
   position:absolute; top:10%; bottom:10%; width:90%;
 }

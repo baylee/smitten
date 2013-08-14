@@ -1,11 +1,12 @@
 %section.bck.light.text.center
   .row.text.book
-    %th= current_user.anonymized_name(@conversation_partner)
-
     - @messages.each do |message|
       %hr
         - if current_user.id == message.sender_id
-          %h4.text.right.color.theme.bold.padding=  message.content
+          %h4.text.right.color.theme.bold.mypadding=  message.content
+          %p= message.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
+
         - else
-          %h4.text.left.bold.padding= message.content
-        %p= message.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
+          %h4.text.left.bold.mypadding= message.content
+          %p= message.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
+
