@@ -1,12 +1,16 @@
-var dashboard = $("#dashboard")
-var homepage = $("#homepage")
-var newspark = $('#new_spark_div')
-$("#mainwrapper").empty()
+var new_spark = $("#new_spark_div");
+var homepage = $("#homepage");
+var dashboard = $("#dashboard");
+var mainwrapper = $("#mainwrapper");
+
+homepage.empty().removeAttr("style");
+new_spark.empty().removeAttr("style");
 dashboard.empty().html("<%= j render 'dashboardpartial' %>")
-$("#mainwrapper").empty().html("<%= j render 'home/indexpartial' %>")
+
+dashboard.css('display', 'block');
+dashboard.css("left", "0%");
+
+homepage.html("<%= j render 'home/indexpartial' %>")
   $("#homepage").hide();
 $("#homepage").css('right', '100%');
 
-dashboard.css('display', 'block');
-newspark.removeAttr("style");
-dashboard.css("left", "0%")

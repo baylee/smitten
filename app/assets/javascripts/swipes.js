@@ -16,7 +16,6 @@ $( document ).ready(function(event) {
       homepage.css('width', '100%');
       $("#homepage").css('left', '100%');
       dashboard.removeAttr("style");
-      alert('foo');
       new_spark.animate({
         right:'100%',
         opacity: 1
