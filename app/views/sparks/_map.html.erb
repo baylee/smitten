@@ -18,23 +18,22 @@
         // this may not be neccessary:
         map.setZoom
 
-        // map.setView([-37.82, 175.215], 14);
-        // [<%#= @destination.latitude %>, <%#= @destination.longitude %>], 6
-
     var markers = new L.MarkerClusterGroup();
 
-    var addressPoints = <%= raw(@my_locations) %>
+    // The below is in case we ever want to add locations you have been/updated locations
+    //
+    // var addressPoints = <%= raw(@my_locations) %>
 
-    for (var i = 0; i < addressPoints.length; i++) {
-        var a = addressPoints[i];
-        var title = a[2] + "\n" + a[3];
-        var marker = L.marker(new L.LatLng(a[0], a[1]), {
-            icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '0044FF'}),
-            title: title
-        });
-        marker.bindPopup(title);
-        markers.addLayer(marker);
-    }
+    // for (var i = 0; i < addressPoints.length; i++) {
+    //     var a = addressPoints[i];
+    //     var title = a[2] + "\n" + a[3];
+    //     var marker = L.marker(new L.LatLng(a[0], a[1]), {
+    //         icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '0044FF'}),
+    //         title: title
+    //     });
+    //     marker.bindPopup(title);
+    //     markers.addLayer(marker);
+    // }
 
     var sparkPoints = <%= raw(@nearby_sparks_for_map) %>
 
@@ -49,7 +48,7 @@
         markers.addLayer(marker);
     }
     // zoom the map to fit the bounds of the markers:
-    setTimeout(function(){map.fitBounds(markers.getBounds())}, 500);
+    setTimeout(function(){map.fitBounds(markers.getBounds())}, 800);
 
     map.addLayer(markers);
 
