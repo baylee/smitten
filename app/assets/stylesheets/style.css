@@ -23,6 +23,7 @@ body{
   margin-top: 80px auto;
   height:100%;
 
+
 }
 
 #all_encompassing_container {
@@ -128,7 +129,7 @@ color: white;
 }
 
 #body {
-  background: rgb(52, 73, 94);
+  background: rgb(236, 240, 241);
 }
 
 input[type='submit']
