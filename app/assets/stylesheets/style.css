@@ -198,10 +198,6 @@ textarea{
 }
 
 
-.spark h3 a{
-  color:  #e74c3c;
-}
-
 #landing_page .button{
   background-color:  rgb(52, 73, 94);
 }
@@ -233,4 +229,11 @@ textarea{
 #sparkshowlinks a {
 padding: 5px;
 font-weight: 600;
+}
+
+
+#spark a {
+  font-size: 22px;
+  color: rgb(26, 188, 156);
+  font-weight: 600;
 }
