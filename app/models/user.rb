@@ -125,32 +125,34 @@ class User < ActiveRecord::Base
     locations_latlong
   end
 
-  def places_ive_been_for_map
-    locations_latlong = []
-    # For each post on FB, if there is a location attached, then put the lat and lon of
-    # that location into an array, and push that array into locations_latlong
-    self.facebook.get_connection("me", "feed").each do |fb_post|
-      if !fb_post["place"].nil?
-        locations_latlong << [fb_post["place"]["location"]["latitude"], fb_post["place"]["location"]["longitude"], fb_post["place"]["name"]]
-      end
-    end
+  # COMMENTED because we are no longer showing all places you've been on map
+  #
+  # def places_ive_been_for_map
+  #   locations_latlong = []
+  #   # For each post on FB, if there is a location attached, then put the lat and lon of
+  #   # that location into an array, and push that array into locations_latlong
+  #   self.facebook.get_connection("me", "feed").each do |fb_post|
+  #     if !fb_post["place"].nil?
+  #       locations_latlong << [fb_post["place"]["location"]["latitude"], fb_post["place"]["location"]["longitude"], fb_post["place"]["name"]]
+  #     end
+  #   end
 
-    # Also push the location of the user's sparks into the locations_latlong array
-    # locations_latlong now holds all the locations a user has been
-    self.sparks.each do |spark|
-      if spark.location_only == true
-        locations_latlong << [spark.latitude, spark.longitude, "(You were here)", spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')]
-      elsif !spark.title.blank?
-        locations_latlong << [spark.latitude, spark.longitude, spark.title, spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p') ]
-      elsif !spark.content.blank?
-        locations_latlong << [spark.latitude, spark.longitude, spark.content, spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')]
-      else
-        locations_latlong << [spark.latitude, spark.longitude, "(You dropped a pin here.)", spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p') ]
-      end
-    end
+  #   # Also push the location of the user's sparks into the locations_latlong array
+  #   # locations_latlong now holds all the locations a user has been
+  #   self.sparks.each do |spark|
+  #     if spark.location_only == true
+  #       locations_latlong << [spark.latitude, spark.longitude, "(You were here)", spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')]
+  #     elsif !spark.title.blank?
+  #       locations_latlong << [spark.latitude, spark.longitude, spark.title, spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p') ]
+  #     elsif !spark.content.blank?
+  #       locations_latlong << [spark.latitude, spark.longitude, spark.content, spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')]
+  #     else
+  #       locations_latlong << [spark.latitude, spark.longitude, "(You dropped a pin here.)", spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p') ]
+  #     end
+  #   end
 
-    locations_latlong
-  end
+  #   locations_latlong
+  # end
 
   def relevant_sparks_for_map
     locations_latlong = self.places_ive_been
