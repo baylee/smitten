@@ -1,12 +1,16 @@
-%section.bck.light.text.center
-  .row.text.book
-    %h2 Inbox of Messages
-    - if !@message_partners.empty?
-      %table
-        %tr
-          %th Partner
-        - @message_partners.each do |partner|
+#messageindex
+  %section.padding.bck.light.text.center
+    .row.padding.text.book
+      %h2 Your Inbox
+      #mailicon.span.icon.envelope
+      %p.padding Click to view your previous conversations.
+      %hr
+      - if !@message_partners.empty?
+        %table.margin-top
           %tr
-            %td= link_to partner.email, message_path(partner.id)
-    - else
-      %p You don't have any messages yet
+            %th Partner
+          - @message_partners.each do |partner|
+            %tr
+              %td.text.bold= link_to partner.email, message_path(partner.id)
+      - else
+        %p You don't have any messages yet

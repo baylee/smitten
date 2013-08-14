@@ -176,7 +176,7 @@ input[type='submit']
   color: #e74c3c;
 }
 
-#sparkshow, #editspark{
+#sparkshow, #editspark, #messageindex{
   padding-top: 40px;
   background-color: rgb(236, 240, 241);
   padding-bottom: 140px;
@@ -195,3 +195,14 @@ form{
   background-color:  rgb(52, 73, 94);
 }
 
+#mailicon{
+  font-size: 44px;
+}
+
+#messageindex a{
+  color:  rgb(52, 73, 94);
+}
+
+#messageindex tr{
+  font-size: 12px;
+}
