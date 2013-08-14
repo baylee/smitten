@@ -158,7 +158,14 @@ input[type='submit']
 }
 
 #map {
-  position:absolute; top:10%; bottom:10%; width:90%;
+  margin: auto;
+}
+
+#mapbounds{
+  width: 100%;
+  margin: 0 auto;
+  height: 400px;
+  border: 3px solid rgb(231, 76, 60);
 }
 #landing_page{
   margin:0;
@@ -177,7 +184,7 @@ input[type='submit']
 }
 
 #sparkshow, #editspark, #messageindex{
-  padding-top: 40px;
+  /*padding-top: 40px;*/
   background-color: rgb(236, 240, 241);
   padding-bottom: 140px;
 }
@@ -209,4 +216,12 @@ form{
 
 #mainwrapper{
   padding-top: 50px;
+}
+.notice{
+  color: rgb(52, 73, 94);
+}
+
+.largeicon{
+  font-size: 44px;
+  padding: 10px;
 }

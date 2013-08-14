@@ -1,12 +1,13 @@
 / Remember if you are going to update this page, also update the ajax partial
+%section.bck.padding.light.text.center
+  .row.text.padding.book
+    %h1 Make a new Spark
 
-%section.bck.light.text.padding.center
-  .row.text.book
-    %h1.padding Make a new Spark
     #geolocation_status.text.normal.bold
       / The following will be auto updated by the spark_location.js if coords are found.
       %p.bck.theme.text.white.bold NOTE: You must first "accept" the geolocation settings to post a spark
 
+    %hr
 
     = form_for @spark, :method => "post" do |f|
       = f.label :title
