@@ -1,0 +1,9 @@
+var new_spark = $("#new_spark_div")
+var homepage = $("#homepage")
+var dashboard = $("#dashboard")
+var mainwrapper = $("#mainwrapper")
+
+new_spark.empty().removeAttr("style");
+dashboard.empty().removeAttr("style");
+
+homepage.empty().removeAttr("style").html("<%= j render '/sparks/map' %>");

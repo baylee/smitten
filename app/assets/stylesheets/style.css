@@ -67,7 +67,7 @@ left: 2px;
 }
 
 #new_spark_div, #dashboard{
-  display: none;
+  /*display: none;*/
   position: absolute;
   width: 100%;
   border: 0px;

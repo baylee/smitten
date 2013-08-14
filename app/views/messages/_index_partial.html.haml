@@ -1,0 +1,12 @@
+%section.bck.light.text.center
+  .row.text.book
+    %h2 Inbox of Messages
+    - if !@message_partners.empty?
+      %table
+        %tr
+          %th Partner
+        - @message_partners.each do |partner|
+          %tr
+            %td= link_to partner.email, message_path(partner.id)
+    - else
+      %p You don't have any messages yet
