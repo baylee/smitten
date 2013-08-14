@@ -1,11 +1,14 @@
 var new_spark = $("#new_spark_div")
 var homepage = $("#homepage")
 var dashboard = $("#dashboard")
+var other_pages = $("#other_pages")
 var mainwrapper = $("#mainwrapper")
 
-// mainwrapper.empty();
-new_spark.empty().html("<%= j render 'sparksnew' %>")
-dashboard.removeAttr("style")
+dashboard.empty().removeAttr("style");
+other_pages.empty().removeAttr("style");
+
+new_spark.empty().removeAttr("style").html("<%= j render 'sparksnew' %>")
+
 var smoothtrans = function(){
   new_spark.css('display', 'block');
   homepage.css('position', 'absolute')
