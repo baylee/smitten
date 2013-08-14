@@ -3,18 +3,25 @@ var homepage = $("#homepage")
 var dashboard = $("#dashboard")
 var mainwrapper = $("#mainwrapper")
 
-mainwrapper.empty();
+// mainwrapper.empty();
 new_spark.empty().html("<%= j render 'sparksnew' %>")
-
-new_spark.css('display', 'block');
 dashboard.removeAttr("style")
-new_spark.css('zindex', '1000')
-new_spark.css("right", "0%")
+var smoothtrans = function(){
+  new_spark.css('display', 'block');
+  homepage.css('position', 'absolute')
+  homepage.css('width', '100%')
+  homepage.animate({
+    left:'100%',
+    opacity: 1
+  },{ duration: 500, queue: false})
 
-  mainwrapper.empty().html("<%= j render 'home/indexpartial' %>")
-    $("#homepage").hide();
-  $("#homepage").css('left', '100%');
+  new_spark.animate({
+    right: "0%",
+    opacity: 1
+  },{ duration: 500, queue: false});
 
+}
+smoothtrans();
 
 
 $(function() {
@@ -44,7 +51,7 @@ $(function() {
       $("#lon").val(longitude);
       $("#lat2").val(latitude);
       $("#lon2").val(longitude);
-      return $("#geolocation_status").empty().append("<p>This spark will be associated with your current location - lat: " + latitude + ", long: " + longitude);
+      return $("#geolocation_status").empty().append("<p class='bck color'>This spark will be associated with your current location - lat: " + latitude + ", long: " + longitude);
     };
   };
   if ($('#geolocation_status').length !== 0) {

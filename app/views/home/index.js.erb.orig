@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var mainwrapper = $('#mainwrapper')
 var dashboard = $('#dashboard')
 var new_spark = $("#new_spark_div")
@@ -25,3 +26,5 @@ $( document ).ready(function(event) {
       //here we are on the homepage, we can either go left or right, allow page scroll lets you do the normal stuff with up and down
   });
 });
+=======
+>>>>>>> b2b9184e15bb3faec8456a1c0c470dc9e4917f85

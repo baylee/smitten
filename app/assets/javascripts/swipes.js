@@ -5,50 +5,59 @@ $( document ).ready(function(event) {
   var sparkbutton = $("#sparkbutton");
   var dashbutton =  $("#dashbutton");
   var mainwrapper = $("#mainwrapper");
+  var new_spark = $("#new_spark_div");
+  var homepage = $("#homepage");
+  var dashboard = $("#dashboard");
 
-  $("#new_spark_div").swipe({
+  new_spark.swipe({
     swipeLeft:function(event, direction, distance, duration, fingerCount) {
-      var new_spark = $("#new_spark_div")
-      var homepage = $("#homepage")
-      var dashboard = $("#dashboard")
-      homepage.css('display', 'block');
+
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
-      new_spark.removeAttr("style")
-      dashboard.removeAttr("style")
-      homepage.css('zindex', '1000')
-      homepage.animate({
+      $("#homepage").css('left', '100%');
+      dashboard.removeAttr("style");
+      alert('foo');
+      new_spark.animate({
+        right:'100%',
+        opacity: 1
+      },{ duration: 500, queue: false});
+      $('#homepage').css("display", "block");
+      $('#homepage').animate({
         left: "0%",
         opacity: 1
-      }, 500 );
+      }, { duration: 500, queue: false});
       //when you swipe on the container div new_spark, click on the homebutton link
     }
   });
-  $("#dashboard").swipe({
+  dashboard.swipe({
     swipeRight:function(event, direction, distance, duration, fingerCount) {
-      var new_spark = $("#new_spark_div")
-      var homepage = $("#homepage")
-      var dashboard = $("#dashboard")
-      homepage.css('display', 'block');
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
-      new_spark.removeAttr("style")
-      dashboard.removeAttr("style")
-      homepage.css('zindex', '1000')
-      homepage.animate({
-        right: "0%",
-        opacity: 1
-      }, 500 );
+      new_spark.removeAttr("style");
+
+      var backtohome = function(){
+        dashboard.animate({
+          left:'100%',
+          opacity: 1
+        },{ duration: 500, queue: false});
+        $('#homepage').css("display", "block");
+        $('#homepage').animate({
+          right: "0%",
+          opacity: 1
+        }, { duration: 500, queue: false});
+      };
+      backtohome();
     }
   });
-  $("#homepage").swipe({
+  homepage.swipe({
     swipe:function(event, direction, distance, duration, fingerCount) {
+      homepage.removeAttr('style');
       if (direction === "right"){
-        $.getScript(sparkbutton.attr('href'));
+        $.getScript("swipe_to_spark");
 
       }
       if(direction === "left"){
-        $.getScript(dashbutton.attr('href'));
+        $.getScript("swipe_to_dash");
       }
     },
       allowPageScroll:"auto"

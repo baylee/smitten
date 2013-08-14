@@ -11,7 +11,8 @@ FinalProject::Application.routes.draw do
   get "messages/:partner_id" => 'messages#show', as: :message
   post "messages/:partner_id" => 'messages#create', as: :messages
   get "messages" => 'messages#index', as: :messages
-  get "nav" => 'home#nav', as: :nav
+  get "swipe_to_dash" => 'users#swipe_to_dash', as: :swipe_to_dash
+  get "swipe_to_spark" => 'sparks#swipe_to_spark', as: :swipe_to_spark
   get "map" => 'sparks#map', as: "map"
 
   match 'users/auth/:service/callback' => 'services#create'

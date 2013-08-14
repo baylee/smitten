@@ -1,4 +1,3 @@
-/ Remember if you are going to update this page, also update the ajax partial
 #homepage
   %section.bck.light.text.padding.center
     .row.text.book.padding
@@ -11,6 +10,6 @@
         %h4.text.bold All sparks near your past locations:
         %hr
         #spark_feed.bck.lightest
-          = render "spark_feed"
+          = render "home/spark_feed"
 
         = will_paginate @nearby_sparks

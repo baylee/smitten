@@ -5,6 +5,14 @@ class SparksController < ApplicationController
 
   def new
     @spark = Spark.new
+       @nearby_sparks = current_user.relevant_sparks
+        @spark = Spark.new
+       # will_paginate is designed to work on models; this allows it to work on an array
+       current_page = params[:page] || 1
+       per_page = 20
+       @nearby_sparks = WillPaginate::Collection.create(current_page, per_page, @nearby_sparks.length) do |pager|
+         pager.replace @nearby_sparks[pager.offset, pager.per_page].to_a
+       end
   end
 
   def create
@@ -77,6 +85,10 @@ class SparksController < ApplicationController
   def map
     @my_locations = current_user.places_ive_been_for_map
     @nearby_sparks_for_map = current_user.relevant_sparks_for_map
+  end
+
+  def swipe_to_spark
+    @spark = Spark.new
   end
 
 

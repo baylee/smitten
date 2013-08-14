@@ -174,3 +174,23 @@ input[type='submit']
 #landingheart{
   color: #e74c3c;
 }
+
+#sparkshow, #editspark{
+  padding-top: 40px;
+  background-color: rgb(236, 240, 241);
+  padding-bottom: 140px;
+}
+
+form{
+  font-size: 28px;
+}
+
+
+.spark h3 a{
+  color:  #e74c3c;
+}
+
+#landing_page .button{
+  background-color:  rgb(52, 73, 94);
+}
+
