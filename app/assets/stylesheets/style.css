@@ -178,8 +178,11 @@ input[type='submit']
 #sparkshow, #editspark{
   padding-top: 40px;
   background-color: rgb(236, 240, 241);
+  padding-bottom: 140px;
 }
 
 form{
   font-size: 28px;
 }
+
+
