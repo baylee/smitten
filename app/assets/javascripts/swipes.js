@@ -8,28 +8,37 @@ $( document ).ready(function(event) {
 
   $("#new_spark_div").swipe({
     swipeLeft:function(event, direction, distance, duration, fingerCount) {
-      var new_spark = $("#new_spark_div");
-      var homepage = $("#homepage");
-      var dashboard = $("#dashboard");
-      homepage.css('position', 'absolute');
-      homepage.css('left', '100%');
+      var new_spark = $("#new_spark_div")
+      var homepage = $("#homepage")
+      var dashboard = $("#dashboard")
       homepage.css('display', 'block');
-      new_spark.removeAttr("style");
-      dashboard.removeAttr("style");
-      homepage.css('zindex', '1000');
+      homepage.css('position', 'absolute');
+      homepage.css('width', '100%');
+      new_spark.removeAttr("style")
+      dashboard.removeAttr("style")
+      homepage.css('zindex', '1000')
       homepage.animate({
-      left: "0%",
-      opacity: 1
+        left: "0%",
+        opacity: 1
       }, 500 );
-
       //when you swipe on the container div new_spark, click on the homebutton link
     }
   });
   $("#dashboard").swipe({
     swipeRight:function(event, direction, distance, duration, fingerCount) {
-      $.getScript(homebutton.attr('href'));
-      //instead of click I want this to be an ajax call
-      //same when you are on the dashboard page
+      var new_spark = $("#new_spark_div")
+      var homepage = $("#homepage")
+      var dashboard = $("#dashboard")
+      homepage.css('display', 'block');
+      homepage.css('position', 'absolute');
+      homepage.css('width', '100%');
+      new_spark.removeAttr("style")
+      dashboard.removeAttr("style")
+      homepage.css('zindex', '1000')
+      homepage.animate({
+        right: "0%",
+        opacity: 1
+      }, 500 );
     }
   });
   $("#homepage").swipe({
