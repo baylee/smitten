@@ -5,8 +5,11 @@ $( document ).ready(function(event) {
   var sparkbutton = $("#sparkbutton");
   var dashbutton =  $("#dashbutton");
   var mainwrapper = $("#mainwrapper");
+  var new_spark = $("#new_spark_div")
+  var homepage = $("#homepage")
+  var dashboard = $("#dashboard")
 
-  $("#new_spark_div").swipe({
+  new_spark.swipe({
     swipeLeft:function(event, direction, distance, duration, fingerCount) {
       var new_spark = $("#new_spark_div")
       var homepage = $("#homepage")
@@ -24,11 +27,9 @@ $( document ).ready(function(event) {
       //when you swipe on the container div new_spark, click on the homebutton link
     }
   });
-  $("#dashboard").swipe({
+  dashboard.swipe({
     swipeRight:function(event, direction, distance, duration, fingerCount) {
-      var new_spark = $("#new_spark_div")
-      var homepage = $("#homepage")
-      var dashboard = $("#dashboard")
+
       homepage.css('display', 'block');
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
@@ -41,7 +42,7 @@ $( document ).ready(function(event) {
       }, 500 );
     }
   });
-  $("#homepage").swipe({
+  homepage.swipe({
     swipe:function(event, direction, distance, duration, fingerCount) {
       if (direction === "right"){
         $.getScript("swipe_to_spark");
