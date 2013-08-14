@@ -41,7 +41,7 @@ $( document ).ready(function(event) {
         right: "0%",
         opacity: 1
       }, { duration: 500, queue: false});
-      dashboard.empty().removeAttr("style");
+      setTimeout(function(){dashboard.empty().removeAttr("style");}, 200);
     }
   });
   homepage.swipe({
