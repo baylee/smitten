@@ -22,10 +22,10 @@ FinalProject::Application.routes.draw do
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
-  get ":page" => 'home#index'
+  get ":page" => 'home#paginate'
 
   authenticated :user do
-    root :to => "home#paginate"
+    root :to => "home#index"
   end
 
   root :to => "home#landing_page"
