@@ -25,6 +25,7 @@
       = link_to "Back to your Profile", profile_path
       - if @spark.user_id == current_user.id
         = link_to 'Edit this spark', edit_spark_path(@spark.id)
+        = link_to "Delete", spark_path(@spark), :data => { :confirm => "Are you sure?" }, :method => :delete
       - else
         = link_to 'Message this user', message_path(@spark.user_id)
 
