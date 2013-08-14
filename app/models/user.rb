@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
   # convo partner's email, else they will see "anonymous"
   def anonymized_name(conversation_partner)
     if self.received_message_from_partner?(conversation_partner)
-      conversation_partner.email
+      conversation_partner.get_profile_name
     else
       'Anonymous'
     end
