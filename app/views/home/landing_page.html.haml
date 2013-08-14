@@ -7,4 +7,11 @@
         %h1.text.alert
           Smitten
         #landingheart.span.icon.heart
+
+      =link_to user_omniauth_authorize_path(:facebook) do
+        %span.icon.facebook-sign
+      %h5.color.theme.text.bold Sign in with Facebook
+
+
+
       =link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
