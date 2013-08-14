@@ -1,4 +1,10 @@
-%section.bck.light.text.padding.center
-  .row.text.book.padding
-    Welcome to Smitten.
-    =link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+#landing_page
+  %section.bck.light.text.padding.center
+    .row.text.book.padding
+      %h4
+        Welcome to
+      #smitten
+        %h1.text.alert
+          Smitten
+        #landingheart.span.icon.heart
+      =link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)

@@ -159,4 +159,18 @@ input[type='submit']
 #map {
   position:absolute; top:10%; bottom:10%; width:90%;
 }
+#landing_page{
+  margin:0;
+  padding:0;
+}
 
+#smitten{
+  color: #e74c3c;
+  font-size: 26px;
+  margin-top: -10px;
+  padding-top: 0;
+}
+
+#landingheart{
+  color: #e74c3c;
+}
