@@ -4,23 +4,27 @@
     - if Message.is_flagged_by_user?(@messages, current_user)
       #already_flagged You have already flagged this spark
 
-    %h1 Your Conversation with
-    %h3
-      = current_user.anonymized_name(@conversation_partner)
+    %h5.text.bold Your Conversation with
     #user_icon
       - if current_user.received_message_from_partner?(@conversation_partner)
         = image_tag @conversation_partner.get_profile_photo_url
-        = @conversation_partner.get_profile_name
+
       - else
         = image_tag '/assets/user_icon.png'
+    %h4.text.bold= @conversation_partner.get_profile_name
 
+    %h6= current_user.anonymized_name(@conversation_partner)
 
     = render 'form'
 
 
     = render 'messages'
+    %hr
+    / = link_to('Flag this conversation', '#', html_options = {id: 'flag_link', :class => "button anchor secondary"})
+    %a#flag_link.button.secondary
+      %span.icon.flag
+      %span Flag this conversation
 
-    = link_to('Flag this conversation', '#', html_options = {id: 'flag_link', :class => "button anchor secondary"})
 
     = form_for Flag.new, remote: true do |f|
       = f.label :reason, 'Reason for this flag:'

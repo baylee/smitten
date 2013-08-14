@@ -1,33 +1,38 @@
-#flagged_spark
-  - if @spark.is_flagged_by_user?(current_user)
-    #already_flagged You have already flagged this spark
+#sparkshow
+  %section.bck.padding.light.text.center
+    .row.text.book
+      #flagged_spark
+        - if @spark.is_flagged_by_user?(current_user)
+          #already_flagged You have already flagged this spark
 
-%h1= @spark.title
+      %h2= @spark.title
 
-%h2
-  This spark occurred at
-  = @spark.input_location
-%h5
-  at:
-  = @spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
 
-%p
-  Description:
-  = @spark.content
 
-%br
 
-= link_to "Back to your Profile", profile_path
-- if @spark.user_id == current_user.id
-  = link_to 'Edit this spark', edit_spark_path(@spark.id)
-- else
-  = link_to 'Message this user', message_path(@spark.user_id)
+      %hr
+      %h5.padding
+        = @spark.content
+      %span.icon.heart
+      %h5
+        This spark occurred at
+        = @spark.input_location
+      %h5
+        = @spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
 
-= link_to('Flag this spark', '#', html_options = {id: 'flag_link'})
 
-= form_for Flag.new, remote: true do |f|
-  = f.label :reason, 'Reason for this flag:'
-  = f.text_area :reason
-  = f.hidden_field :flaggable_type, value: 'Spark'
-  = f.hidden_field :flagged_id, value: @spark.id
-  = f.submit "Save", data: { confirm: "Are you sure? You will not be able to undo this action." }
+
+      = link_to "Back to your Profile", profile_path
+      - if @spark.user_id == current_user.id
+        = link_to 'Edit this spark', edit_spark_path(@spark.id)
+      - else
+        = link_to 'Message this user', message_path(@spark.user_id)
+
+      = link_to('Flag this spark', '#', html_options = {id: 'flag_link'})
+
+      = form_for Flag.new, remote: true do |f|
+        = f.label :reason, 'Reason for this flag:'
+        = f.text_area :reason
+        = f.hidden_field :flaggable_type, value: 'Spark'
+        = f.hidden_field :flagged_id, value: @spark.id
+        = f.submit "Save", data: { confirm: "Are you sure? You will not be able to undo this action." }

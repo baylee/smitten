@@ -1,15 +1,15 @@
 #homepage
   %section.bck.light.text.padding.center
     .row.text.book.padding
+      #update_location.button.seconday
+        %span.icon.map-marker
+        %span Update My Location!
 
-
-
-      %button{:id => "update_location"} Update Location!
       %hr
       %section.bck.lightest
-        %h4.text.color.theme.bold All sparks near your past locations:
+        %h4.text.bold All sparks near your past locations:
         %hr
-        #spark_feed
+        #spark_feed.bck.lightest
           = render "spark_feed"
 
         = will_paginate @nearby_sparks
