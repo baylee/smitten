@@ -1,11 +1,14 @@
-%h1 Edit this Spark
+#editspark
+  %section.bck.light.text.center
+    .row.text.book
+      %h1 Edit this Spark
 
 
-= form_for @spark, :method => "put" do |f|
-  = f.label :title
-  = f.text_field :title, :id => "title", :placeholder => "I fell for you...."
-  = f.label :input_location, "Location of Spark"
-  = f.text_field :input_location, :id => "input_location", :placeholder => "The Hattery, SOMA, etc...."
-  = f.label :content, "Spark Description"
-  = f.text_area :content, :id => "content", :placeholder => "I almost tripped over my charger to hold the door for you...."
-  = f.submit
+      = form_for @spark, :method => "put" do |f|
+        = f.label :title
+        = f.text_field :title, :id => "title", :placeholder => "I fell for you...."
+        = f.label :input_location, "Location of Spark"
+        = f.text_field :input_location, :id => "input_location", :placeholder => "The Hattery, SOMA, etc...."
+        = f.label :content, "Spark Description"
+        = f.text_area :content, :id => "content", :placeholder => "I almost tripped over my charger to hold the door for you...."
+        = f.submit

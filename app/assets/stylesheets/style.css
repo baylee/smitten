@@ -175,7 +175,11 @@ input[type='submit']
   color: #e74c3c;
 }
 
-#sparkshow{
+#sparkshow, #editspark{
   padding-top: 40px;
   background-color: rgb(236, 240, 241);
+}
+
+form{
+  font-size: 28px;
 }
