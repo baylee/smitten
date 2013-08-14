@@ -13,7 +13,7 @@ $( document ).ready(function(event) {
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
       $("#homepage").css('left', '100%');
-      dashboard.removeAttr("style");
+      dashboard.empty().removeAttr("style");
       new_spark.animate({
         right:'100%',
         opacity: 1
@@ -29,7 +29,7 @@ $( document ).ready(function(event) {
     swipeRight:function(event, direction, distance, duration, fingerCount) {
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
-      new_spark.removeAttr("style");
+      new_spark.empty().removeAttr("style");
 
       var backtohome = function(){
         dashboard.animate({
@@ -43,11 +43,12 @@ $( document ).ready(function(event) {
         }, { duration: 500, queue: false});
       };
       backtohome();
+      dashboard.empty().removeAttr("style");
     }
   });
   homepage.swipe({
     swipe:function(event, direction, distance, duration, fingerCount) {
-      homepage.removeAttr('style');
+      homepage.empty().removeAttr('style');
       if (direction === "right"){
         $.getScript("swipe_to_spark");
 

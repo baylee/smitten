@@ -7,7 +7,7 @@ var mainwrapper = $("#mainwrapper");
 other_pages.empty().removeAttr("style");
 homepage.empty().removeAttr("style");
 new_spark.empty().removeAttr("style");
-dashboard.empty().removeAttr("style").html("<%= j render 'dashboardpartial' %>")
+dashboard.empty().removeAttr("style").html("<%= j render '/users/dashboardpartial' %>")
 
 dashboard.css('display', 'block');
 dashboard.css("left", "0%");
@@ -15,4 +15,6 @@ dashboard.css("left", "0%");
 homepage.html("<%= j render 'home/indexpartial' %>")
   $("#homepage").hide();
 $("#homepage").css('right', '100%');
+$("#homepage").css('display', 'none');
+
 

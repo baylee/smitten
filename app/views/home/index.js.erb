@@ -7,7 +7,9 @@ var mainwrapper = $("#mainwrapper")
 other_pages.empty().removeAttr("style");
 new_spark.empty().removeAttr("style");
 dashboard.empty().removeAttr("style");
-homepage.empty().removeAttr("style").html("<%= j render 'indexpartial' %>");
+homepage.empty().removeAttr("style").html("<%= j render '/home/indexpartial' %>");
+
+
 //This is for the swipe events on the home page, dashboard, and new spark page
 
 $( document ).ready(function(event) {
