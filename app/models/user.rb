@@ -138,7 +138,15 @@ class User < ActiveRecord::Base
     # Also push the location of the user's sparks into the locations_latlong array
     # locations_latlong now holds all the locations a user has been
     self.sparks.each do |spark|
-      locations_latlong << [spark.latitude, spark.longitude, spark.title.blank? ? "Untitled" : spark.title ]
+      if spark.location_only == true
+        locations_latlong << [spark.latitude, spark.longitude, "(You were here)", spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')]
+      elsif !spark.title.blank?
+        locations_latlong << [spark.latitude, spark.longitude, spark.title, spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p') ]
+      elsif !spark.content.blank?
+        locations_latlong << [spark.latitude, spark.longitude, spark.content, spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')]
+      else
+        locations_latlong << [spark.latitude, spark.longitude, "(You dropped a pin here.)", spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p') ]
+      end
     end
 
     locations_latlong
@@ -170,7 +178,11 @@ class User < ActiveRecord::Base
     }
 
     nearby_sparks.each do |spark|
-      sparks_for_map << [spark.latitude, spark.longitude, spark.title.blank? ? "Untitled" : spark.title ]
+      if !spark.title.blank?
+        sparks_for_map << [spark.latitude, spark.longitude, spark.title, spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')]
+      else
+        sparks_for_map << [spark.latitude, spark.longitude, spark.content, spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')]
+      end
     end
 
     sparks_for_map
