@@ -23,6 +23,7 @@ body{
   margin-top: 80px auto;
   height:100%;
 
+
 }
 
 #all_encompassing_container {
@@ -128,7 +129,7 @@ color: white;
 }
 
 #body {
-  background: rgb(52, 73, 94);
+  background: rgb(236, 240, 241);
 }
 
 input[type='submit']
@@ -175,7 +176,7 @@ input[type='submit']
   color: #e74c3c;
 }
 
-#sparkshow, #editspark{
+#sparkshow, #editspark, #messageindex{
   padding-top: 40px;
   background-color: rgb(236, 240, 241);
   padding-bottom: 140px;
@@ -194,3 +195,14 @@ form{
   background-color:  rgb(52, 73, 94);
 }
 
+#mailicon{
+  font-size: 44px;
+}
+
+#messageindex a{
+  color:  rgb(52, 73, 94);
+}
+
+#messageindex tr a{
+  font-size: 20px;
+}
