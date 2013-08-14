@@ -229,3 +229,8 @@ textarea{
   font-size: 44px;
   padding: 10px;
 }
+
+#sparkshowlinks a {
+padding: 5px;
+font-weight: 600;
+}
