@@ -4,12 +4,14 @@ $( document ).ready(function(event) {
   var homebutton =  $("#homebutton");
   var sparkbutton = $("#sparkbutton");
   var dashbutton =  $("#dashbutton");
+  var mainwrapper = $("#mainwrapper");
 
   $("#new_spark_div").swipe({
     swipeLeft:function(event, direction, distance, duration, fingerCount) {
       var new_spark = $("#new_spark_div");
       var homepage = $("#homepage");
       var dashboard = $("#dashboard");
+      homepage.css('position', 'absolute');
       homepage.css('left', '100%');
       homepage.css('display', 'block');
       new_spark.removeAttr("style");
@@ -25,18 +27,19 @@ $( document ).ready(function(event) {
   });
   $("#dashboard").swipe({
     swipeRight:function(event, direction, distance, duration, fingerCount) {
-      homebutton.click();
+      $.getScript(homebutton.attr('href'));
+      //instead of click I want this to be an ajax call
       //same when you are on the dashboard page
     }
   });
   $("#homepage").swipe({
     swipe:function(event, direction, distance, duration, fingerCount) {
       if (direction === "right"){
-        sparkbutton.click();
+        $.getScript(sparkbutton.attr('href'));
 
       }
       if(direction === "left"){
-        dashbutton.click();
+        $.getScript(dashbutton.attr('href'));
       }
     },
       allowPageScroll:"auto"
