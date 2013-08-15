@@ -16,4 +16,3 @@
 
 
 // --------------- Start of new spark character countdown  --------------------
-

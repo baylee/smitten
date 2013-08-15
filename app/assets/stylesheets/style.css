@@ -320,3 +320,11 @@ color: rgb(231, 76, 60);
 -webkit-animation-iteration-count: infinite;
 }
 
+.iosfix {
+  height: 101%;
+  overflow: hidden;
+}
+
+#new_spark_div, #dashboard, #other_pages {
+  margin: 0 auto;
+}
