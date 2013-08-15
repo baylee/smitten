@@ -1,13 +1,19 @@
 %section.bck.light.text.padding.center
   .row.text.book.padding
-    %h1 Welcome to your Profile Page
-    = link_to "Edit Profile", edit_user_registration_path, :remote => true
+    %h5 Welcome to your Profile Page
+    %hr
 
     / need to add facebook picture url...
     #facebook_picture
       = image_tag current_user.get_profile_photo_url
 
     %h4.text.bold= current_user.get_profile_name
+
+    %hr
+    = link_to "Edit Profile", edit_user_registration_path, :remote => true, :id => "profilelink2", :class => "button secondary padding"
+    %hr
+
+
 
     %h2 Your Recent Notes
 

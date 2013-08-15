@@ -264,7 +264,7 @@ body {
 }
 
 #bluecancel{
-  background-color: rgb(52, 73, 94);
+  background-color: rgb(231, 76, 60);
 }
 
 #location_alert{
@@ -336,4 +336,15 @@ color: rgb(231, 76, 60);
 #profile_link > a{
   text-decoration: underline;
   font-weight: 600;
+}
+
+#profilelink2 {
+  font-weight: 600;
+
+}
+
+#facebook_picture img{
+  border: 1px solid rgb(52, 73, 94);
+
+
 }
