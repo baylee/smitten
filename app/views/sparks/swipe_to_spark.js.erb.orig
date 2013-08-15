@@ -16,12 +16,23 @@ var smoothtrans = function(){
   homepage.animate({
     left:'100%',
     opacity: 1
+<<<<<<< HEAD
   },{ duration: 500, queue: false});
+=======
+  },{ duration: 200, queue: false})
+>>>>>>> 5f6dcc2f18da2742c285be79e02de7d657350495
 
   new_spark.animate({
     right: "0%",
     opacity: 1
+<<<<<<< HEAD
   }, {duration: 500, queue: false});
+=======
+  }, {duration: 200, queue: false, complete:function(){
+    new_spark.css("left", "0%");
+
+  }});
+>>>>>>> 5f6dcc2f18da2742c285be79e02de7d657350495
 
 }
 

@@ -9,7 +9,11 @@ $( document ).ready(function(event) {
 
   new_spark.swipe({
     swipeLeft:function(event, direction, distance, duration, fingerCount) {
+<<<<<<< HEAD
 
+=======
+      new_spark.css("left", "");
+>>>>>>> 5f6dcc2f18da2742c285be79e02de7d657350495
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
       // $("#homepage").css('left', '100%');
@@ -23,8 +27,8 @@ $( document ).ready(function(event) {
       $('#homepage').animate({
         left: "0%",
         opacity: 1
-      }, { duration: 500, queue: false});
-      setTimeout(function(){new_spark.empty().removeAttr("style");}, 500);
+      }, { duration: 200, queue: false});
+      setTimeout(function(){new_spark.empty().removeAttr("style");}, 200);
     }
   });
   dashboard.swipe({
@@ -32,17 +36,17 @@ $( document ).ready(function(event) {
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
       new_spark.removeAttr("style");
-
+      $('#homepage').css("display", "block");
       dashboard.animate({
         left:'100%',
         opacity: 1
-      },{ duration: 500, queue: false});
-      $('#homepage').css("display", "block");
+      },{ duration: 200, queue: false});
+
       $('#homepage').animate({
         right: "0%",
         opacity: 1
-      }, { duration: 500, queue: false});
-      setTimeout(function(){dashboard.empty().removeAttr("style");}, 500);
+      }, { duration: 200, queue: false});
+      setTimeout(function(){dashboard.empty().removeAttr("style");}, 200);
     }
   });
   homepage.swipe({

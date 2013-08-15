@@ -23,7 +23,7 @@ L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 		// Setting this to false prevents the removal of any clusters outside of the viewpoint, which
 		// is the default behaviour for performance reasons.
-		removeOutsideVisibleBounds: true,
+		removeOutsideVisibleBounds: false,
 
 		//Whether to animate adding markers after adding the MarkerClusterGroup to the map
 		// If you are adding individual markers set to true, if adding bulk markers leave false for massive performance gains.
