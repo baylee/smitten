@@ -7,24 +7,29 @@ var mainwrapper = $("#mainwrapper")
 dashboard.empty().removeAttr("style");
 other_pages.empty().removeAttr("style");
 
-new_spark.empty().removeAttr("style").html("<%= j render 'sparksnew' %>")
-
+new_spark.empty().removeAttr("style");
+new_spark.css('display', 'none').html("<%= j render 'sparksnew' %>")
+alert('pause')
 var smoothtrans = function(){
+  new_spark.css('right', '100%')
+  alert('pause')
   new_spark.css('display', 'block');
   homepage.css('position', 'absolute')
   homepage.css('width', '100%')
+
   homepage.animate({
     left:'100%',
     opacity: 1
   },{ duration: 500, queue: false})
-
+  alert('pause')
   new_spark.animate({
-    right: "0%",
+    left: "0%",
     opacity: 1
   },{ duration: 500, queue: false});
 
 }
 smoothtrans();
+alert('pause')
 
 
 $(function() {
