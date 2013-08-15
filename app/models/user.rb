@@ -181,9 +181,9 @@ class User < ActiveRecord::Base
 
     nearby_sparks.each do |spark|
       if !spark.title.blank?
-        sparks_for_map << [spark.latitude, spark.longitude, spark.title, spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')]
+        sparks_for_map << [spark.latitude, spark.longitude, spark.title, spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p'), "sparks/#{spark.id}"]
       else
-        sparks_for_map << [spark.latitude, spark.longitude, spark.content, spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')]
+        sparks_for_map << [spark.latitude, spark.longitude, spark.content, spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p'), "sparks/#{spark.id}"]
       end
     end
 

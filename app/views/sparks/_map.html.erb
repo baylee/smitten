@@ -38,20 +38,30 @@
 
     for (var i = 0; i < sparkPoints.length; i++) {
         var a = sparkPoints[i];
-        var title = a[2] + "\n" +  a[3];
+        var title = '"' + a[2] + '"' + "\n" +  a[3];
         var marker = L.marker(new L.LatLng(a[0], a[1]), {
             icon: L.mapbox.marker.icon({'marker-symbol': 'post', 'marker-color': '5544AA'}),
-            title: title
+            title: title,
+            url: a[4]
         });
-        marker.bindPopup(title);
+
+        // http://leafletjs.com/reference.html#popup
+        var popupContent =  '<a target="_blank" class="popup" data-remote="true" href="/' + a[4] + '">' +
+                            '   <p>' + title + '<p>' +
+                            '</a>';
+
+        marker.bindPopup(popupContent,{
+            closeButton: true,
+            maxWidth: 170
+        });
         markers.addLayer(marker);
     }
+
     // zoom the map to fit the bounds of the markers:
     setTimeout(function(){map.fitBounds(markers.getBounds())}, 800);
 
+
     map.addLayer(markers);
-
-
 
 </script>
 
