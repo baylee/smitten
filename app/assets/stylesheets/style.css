@@ -113,7 +113,6 @@ color: white;
 }
 
 #nav {
-  position: fixed;
   width: 100%;
   z-index: 100;
 }
@@ -220,8 +219,8 @@ textarea{
 }
 
 #mainwrapper{
-  padding-top: 50px;
 }
+
 .notice{
   color: rgb(52, 73, 94);
 }
@@ -283,7 +282,7 @@ body {
   height: 700px;
   width: 800px;
 
-  margin: 0 auto;
+  margin: 60px auto;
 
 }
 
