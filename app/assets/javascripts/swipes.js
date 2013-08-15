@@ -12,7 +12,7 @@ $( document ).ready(function(event) {
 
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
-      $("#homepage").css('left', '100%');
+      // $("#homepage").css('left', '100%');
       dashboard.removeAttr("style");
 
       new_spark.animate({
