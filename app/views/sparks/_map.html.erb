@@ -14,9 +14,6 @@
     var map = L.mapbox.map('map', 'examples.map-uci7ul8p')
         // map.addLayer(L.tileLayer('http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'));
 
-        // this may not be neccessary:
-        map.setZoom
-
     var markers = new L.MarkerClusterGroup();
 
     // The below is in case we ever want to add locations you have been/updated locations
@@ -57,11 +54,10 @@
         markers.addLayer(marker);
     }
 
-    // zoom the map to fit the bounds of the markers:
-    setTimeout(function(){map.fitBounds(markers.getBounds())}, 800);
-
-
     map.addLayer(markers);
+    // zoom the map to fit the bounds of the markers:
+    setTimeout(function(){map.fitBounds(markers.getBounds())}, 1000);
+
 
 </script>
 
