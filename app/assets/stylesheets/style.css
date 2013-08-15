@@ -332,3 +332,7 @@ color: rgb(231, 76, 60);
   font-weight: 600px;
   margin-top: 20px;
 }
+
+#profile_link > a{
+  text-decoration: underline;
+}

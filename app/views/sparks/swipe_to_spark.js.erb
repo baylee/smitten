@@ -71,3 +71,17 @@ $(function() {
   }
 
 });
+
+var body = $('body');
+
+function updateCountdown() {
+    // 1000 is the max message length
+    var remaining = 1000 - $('#content').val().length;
+    jQuery('.countdown').html(remaining + ' characters remaining.');
+}
+
+if ($('#new_spark').length !== 0){
+  updateCountdown();
+  body.on('change', '#content', updateCountdown);
+  body.on('keydown','#content', updateCountdown);
+}

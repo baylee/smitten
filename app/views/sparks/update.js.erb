@@ -1,0 +1,10 @@
+var new_spark = $("#new_spark_div")
+var homepage = $("#homepage")
+var dashboard = $("#dashboard")
+var other_pages = $("#other_pages")
+var mainwrapper = $("#mainwrapper")
+
+new_spark.empty().removeAttr("style");
+dashboard.empty().removeAttr("style");
+homepage.empty().removeAttr("style");
+other_pages.empty().removeAttr("style").html("<%= j render '/sparks/show_partial' %>");

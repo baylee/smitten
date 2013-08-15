@@ -63,10 +63,10 @@ class SparksController < ApplicationController
 
     respond_to do |format|
       if @spark.update_attributes(params[:spark])
-        format.html { redirect_to spark_path(@spark), notice: 'Spark has successfully updated.'}
+        format.html { redirect_to root_path, notice: 'Spark has successfully updated.'}
         format.js
       else
-        format.html { redirect_to spark_path(@spark), :alert => 'Spark update failed.' }
+        format.html { redirect_to root_path, :alert => 'Spark update failed.' }
         format.js
       end
     end
