@@ -273,3 +273,38 @@ body {
   /*color: rgb(231, 76, 60);*/
   font-weight: 600;
 }
+
+
+#bottomcontainer{
+  position: relative;
+  height: 700px;
+  width: 800px;
+  border: 1px solid black;
+  margin: 0 auto;
+
+}
+
+#bottomcontainer #iphone {
+  font-size: 1000px;
+  border: 1px solid red;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -300px;
+
+}
+
+#textcontainer{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 200px;
+
+}
+
+
+
+
+
+
+
