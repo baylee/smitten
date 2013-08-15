@@ -85,8 +85,7 @@ left: 2px;
 }
 
 .alert, .notice{
-  margin:0;
-  padding:0;
+  font-color: red;
 }
 
 #homepage{
@@ -268,4 +267,9 @@ body {
 
 #bluecancel{
   background-color: rgb(52, 73, 94);
+}
+#location_alert{
+  padding: 10px;
+  /*color: rgb(231, 76, 60);*/
+  font-weight: 600;
 }
