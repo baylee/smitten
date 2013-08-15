@@ -30,4 +30,4 @@
       = f.text_area :reason
       = f.hidden_field :flaggable_type, value: 'Message'
       = f.hidden_field :sender_id, value: @conversation_partner.id
-      = f.submit "Save", data: { confirm: "Are you sure? This will block you from receiving future messages from #{current_user.anonymized_name(@conversation_partner)}. You will not be able to undo this action." }
+      = f.submit "Save", data: { confirm: "Are you sure? This will block you from receiving future messages from #{current_user.anonymized_name(@conversation_partner)}. You will not be able to undo this action." }, :class => "button anchor alert"

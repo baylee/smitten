@@ -12,6 +12,10 @@
       #spark_feed.bck.lightest
         = render "home/spark_feed"
 
+<<<<<<< HEAD
       = will_paginate @nearby_sparks, params: {controller: "home", action: "paginate"}
 
 
+=======
+      = will_paginate @nearby_sparks
+>>>>>>> ykat
