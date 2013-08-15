@@ -12,4 +12,4 @@
       #spark_feed.bck.lightest
         = render "home/spark_feed"
 
-      = will_paginate @nearby_sparks
+      = will_paginate @nearby_sparks, params: {controller: "home", action: "paginate"}
