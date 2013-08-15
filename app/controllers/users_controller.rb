@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   def swipe_to_dash
 
   end
+
+  def edit
+
+  end
   def show
     user_sparks = Spark.where(:user_id => current_user.id, :location_only => false)
 
