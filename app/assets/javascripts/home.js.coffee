@@ -1,5 +1,5 @@
 $ ->
-  console.log 'document loaded'
+
 
 # --------------- All this is for updating location --------------------
   create_location_only_spark = () ->
