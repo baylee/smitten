@@ -4,11 +4,9 @@ var dashboard = $("#dashboard")
 var other_pages = $("#other_pages")
 var mainwrapper = $("#mainwrapper")
 
+dashboard.empty().removeAttr("style").html("<%= j render 'dashboardpartial' %>")
 new_spark.empty().removeAttr("style");
 other_pages.empty().removeAttr("style");
-
-dashboard.empty().removeAttr("style").html("<%= j render 'dashboardpartial' %>")
-
 
 var smoothtrans = function(){
   dashboard.css('display', 'block');
@@ -26,5 +24,5 @@ var smoothtrans = function(){
   },{ duration: 200, queue: false});
 
 }
-setTimeout(function(){smoothtrans()}, 200)
+setTimeout(function(){smoothtrans()}, 300)
 

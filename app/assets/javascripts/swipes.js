@@ -32,12 +32,12 @@ $( document ).ready(function(event) {
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
       new_spark.removeAttr("style");
-
+      $('#homepage').css("display", "block");
       dashboard.animate({
         left:'100%',
         opacity: 1
       },{ duration: 200, queue: false});
-      $('#homepage').css("display", "block");
+
       $('#homepage').animate({
         right: "0%",
         opacity: 1
