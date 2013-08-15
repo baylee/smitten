@@ -4,7 +4,7 @@
       %h1 Edit this Spark
       %hr
 
-      = form_for @spark, :method => "put" do |f|
+      = form_for @spark, :method => "put", :remote => true do |f|
         = f.label :title
         = f.text_field :title, :id => "title", :placeholder => "I fell for you...."
         = f.label :input_location, "Location of Spark"
