@@ -9,7 +9,7 @@ $( document ).ready(function(event) {
 
   new_spark.swipe({
     swipeLeft:function(event, direction, distance, duration, fingerCount) {
-      new_spark.css("left", "")
+
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
       // $("#homepage").css('left', '100%');
