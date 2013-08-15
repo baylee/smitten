@@ -13,3 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+// --------------- Start of new spark character countdown  --------------------
+

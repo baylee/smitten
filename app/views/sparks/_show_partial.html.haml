@@ -26,7 +26,8 @@
           = link_to "Delete", spark_path(@spark), :data => { :confirm => "Are you sure?" }, :method => :delete
         - else
           = link_to 'Message this user', message_path(@spark.user_id), :remote => true
-          = link_to 'Flag this spark', '#', html_options = {id: 'flag_link'}
+
+        = link_to('Flag this spark', '#', html_options = {id: 'flag_link'})
       %hr
         = form_for Flag.new, remote: true do |f|
           = f.label :reason, 'Reason for this flag:'
