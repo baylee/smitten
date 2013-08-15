@@ -16,12 +16,12 @@ var smoothtrans = function(){
   homepage.animate({
     left:'100%',
     opacity: 1
-  },{ duration: 500, queue: false})
+  },{ duration: 200, queue: false})
 
   new_spark.animate({
     right: "0%",
     opacity: 1
-  }, {duration: 500, queue: false, complete:function(){
+  }, {duration: 200, queue: false, complete:function(){
     new_spark.css("left", "0%");
 
   }});
@@ -32,8 +32,8 @@ var smoothtrans = function(){
 
 
 
+setTimeout(function(){smoothtrans()}, 200)
 
-smoothtrans();
 
 
 $(function() {

@@ -18,12 +18,12 @@ $( document ).ready(function(event) {
       new_spark.animate({
         right:'100%',
         opacity: 1
-      },{ duration: 500, queue: false});
+      },{ duration: 200, queue: false});
       $('#homepage').css("display", "block");
       $('#homepage').animate({
         left: "0%",
         opacity: 1
-      }, { duration: 500, queue: false});
+      }, { duration: 200, queue: false});
       setTimeout(function(){new_spark.empty().removeAttr("style");}, 500);
     }
   });
@@ -36,12 +36,12 @@ $( document ).ready(function(event) {
       dashboard.animate({
         left:'100%',
         opacity: 1
-      },{ duration: 500, queue: false});
+      },{ duration: 200, queue: false});
       $('#homepage').css("display", "block");
       $('#homepage').animate({
         right: "0%",
         opacity: 1
-      }, { duration: 500, queue: false});
+      }, { duration: 200, queue: false});
       setTimeout(function(){dashboard.empty().removeAttr("style");}, 500);
     }
   });
