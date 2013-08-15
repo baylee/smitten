@@ -1,9 +1,9 @@
 $ ->
-
-
 # --------------- All this is for updating location --------------------
   create_location_only_spark = () ->
-    console.log 'this function does something'
+    $('#update_location').css('display', 'none')
+    $('#location_alert').append('<img src="/assets/ajax-loader-2.gif" />')
+
     handleNoGeolocation = (errorFlag) ->
       if (errorFlag)
         console.log("Geolocation service failed.")
