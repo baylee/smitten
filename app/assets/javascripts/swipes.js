@@ -9,7 +9,7 @@ $( document ).ready(function(event) {
 
   new_spark.swipe({
     swipeLeft:function(event, direction, distance, duration, fingerCount) {
-      new_spark.css("left", "")
+      new_spark.css("left", "");
       homepage.css('position', 'absolute');
       homepage.css('width', '100%');
       // $("#homepage").css('left', '100%');
@@ -24,7 +24,7 @@ $( document ).ready(function(event) {
         left: "0%",
         opacity: 1
       }, { duration: 200, queue: false});
-      setTimeout(function(){new_spark.empty().removeAttr("style");}, 500);
+      setTimeout(function(){new_spark.empty().removeAttr("style");}, 200);
     }
   });
   dashboard.swipe({
@@ -42,7 +42,7 @@ $( document ).ready(function(event) {
         right: "0%",
         opacity: 1
       }, { duration: 200, queue: false});
-      setTimeout(function(){dashboard.empty().removeAttr("style");}, 500);
+      setTimeout(function(){dashboard.empty().removeAttr("style");}, 200);
     }
   });
   homepage.swipe({
