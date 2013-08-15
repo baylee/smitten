@@ -1,8 +1,10 @@
 $ ->
   refresh_messages_container = () ->
-    $.ajax
-      dataType: 'script'
-      url: "messages/#{$('#flag_sender_id').val()}"
+    if $('#flag_sender_id') != undefined
+      console.log 'anything'
+      $.ajax
+        dataType: 'script'
+        url: "messages/#{$('#flag_sender_id').val()}"
 
   # the timer refreshes the messages on the page every 10 seconds
   start_timer = () ->
