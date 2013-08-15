@@ -37,10 +37,12 @@
     </section>
   <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
     <div id="mainwrapper">
-      <div id="homepage"><%= yield %></div>
+      <div id="homepage">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %></div>
       <div id="new_spark_div"></div>
       <div id="dashboard"></div>
       <div id="other_pages"></div>

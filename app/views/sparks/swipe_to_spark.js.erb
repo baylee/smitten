@@ -21,9 +21,18 @@ var smoothtrans = function(){
   new_spark.animate({
     right: "0%",
     opacity: 1
-  },{ duration: 500, queue: false});
+  }, {duration: 500, queue: false, complete:function(){
+    new_spark.css("left", "0%");
+
+  }});
 
 }
+
+
+
+
+
+
 smoothtrans();
 
 
