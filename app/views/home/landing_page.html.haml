@@ -6,7 +6,7 @@
       #smitten
         %h1.text.alert
           Smitten
-        #landingheart.span.icon.heart
+        #landingheart.span.icon.heart.animated.pulse
 
       %hr
         =link_to user_omniauth_authorize_path(:facebook), :class => 'button blue' do
@@ -14,4 +14,4 @@
           %span Sign in with Facebook
 
     %hr
-      =link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
+    %p

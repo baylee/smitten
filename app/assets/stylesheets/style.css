@@ -182,6 +182,10 @@ input[type='submit']
 
 #landingheart{
   color: #e74c3c;
+  font-size: 30px;
+  -o-animation-duration: 0.5s;
+  -moz-animation-delay: 0s;
+  -webkit-animation-iteration-count: infinite;
 }
 
 #sparkshow, #editspark, #messageindex{
@@ -278,18 +282,19 @@ body {
   position: relative;
   height: 700px;
   width: 800px;
-  border: 1px solid black;
+
   margin: 0 auto;
 
 }
 
 #bottomcontainer #iphone {
   font-size: 1000px;
-  border: 1px solid red;
+
   position: absolute;
   left: 0;
   right: 0;
   top: -300px;
+  overflow: hidden;
 
 }
 
@@ -298,7 +303,20 @@ body {
   left: 0;
   right: 0;
   top: 200px;
+  width: 200px;
+  margin: 0 auto;
 
 }
 
+.salmontext{
+  color: rgb(231, 76, 60);
+}
+
+#desktopheart{
+font-size: 40px;
+color: rgb(231, 76, 60);
+-o-animation-duration: 0.5s;
+-moz-animation-delay: 0s;
+-webkit-animation-iteration-count: infinite;
+}
 
