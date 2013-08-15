@@ -15,6 +15,7 @@
       = f.label :input_location, "Location of Spark"
       = f.text_field :input_location, :id => "input_location", :placeholder => "The Hattery, SOMA, etc...."
       = f.label :content, "Spark Description"
+      .countdown
       = f.text_area :content, :id => "content", :placeholder => "I almost tripped over my charger to hold the door for you...."
       = f.hidden_field :user_id, :value => current_user.id
       = f.hidden_field :latitude,  :id => "lat"
