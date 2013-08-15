@@ -9,6 +9,7 @@ FinalProject::Application.routes.draw do
 
   post 'update_location' => 'sparks#update_location', as: :update_location
   get "messages/:partner_id" => 'messages#show', as: :message
+  get "messages/refresh/:partner_id" => 'messages#refresh', as: :message_refresh
   post "messages" => 'messages#create', as: :messages
   get "messages" => 'messages#index', as: :messages
   get "swipe_to_dash" => 'users#swipe_to_dash', as: :swipe_to_dash

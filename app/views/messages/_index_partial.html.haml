@@ -11,6 +11,6 @@
             %th Partner
           - @message_partners.each do |partner|
             %tr
-              %td.text.bold= link_to truncate(partner.email, length: 22), message_path(partner.id)
+              %td.text.bold= link_to truncate(partner.email, length: 22), message_path(partner.id), :remote => true
       - else
         %p You don't have any messages yet

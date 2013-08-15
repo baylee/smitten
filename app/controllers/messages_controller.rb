@@ -28,7 +28,12 @@ class MessagesController < ApplicationController
       format.js
     end
   end
+  def refresh
+    @message = Message.new
+    @conversation_partner = User.find(params[:partner_id])
 
+    @messages = current_user.all_messages(@conversation_partner)
+  end
   def create
     @message = current_user.sent_messages.build(params[:message])
 
