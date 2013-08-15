@@ -18,6 +18,6 @@
         %th Created
       - @user_sparks.each do |spark|
         %tr
-          %td= !spark.title.blank? ? (link_to spark.title, spark_path(spark)) : (link_to "(Add title)", edit_spark_path(spark))
-          %td= !spark.input_location.blank? ? (link_to spark.input_location, spark_path(spark)) : (link_to "(Add location)", edit_spark_path(spark))
+          %td= !spark.title.blank? ? (link_to spark.title, spark_path(spark), :remote => true) : (link_to "(Add title)", edit_spark_path(spark), :remote => true)
+          %td= !spark.input_location.blank? ? (link_to spark.input_location, spark_path(spark), :remote => true) : (link_to "(Add location)", edit_spark_path(spark), :remote => true)
           %td= spark.created_at.advance(:hours => -7).strftime('%B %e, %Y at %l:%M %p')
