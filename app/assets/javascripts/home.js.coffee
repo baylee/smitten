@@ -1,7 +1,9 @@
 $ ->
+  console.log 'document loaded'
 
 # --------------- All this is for updating location --------------------
   create_location_only_spark = () ->
+    console.log 'this function does something'
     handleNoGeolocation = (errorFlag) ->
       if (errorFlag)
         console.log("Geolocation service failed.")
@@ -36,7 +38,7 @@ $ ->
         method: "POST"
         data: spark_data
 
-  $('body').on("click", "#update_location", create_location_only_spark)
+  $('body').on("touchstart", "#update_location", create_location_only_spark)
 
 # --------------- End of updating location --------------------
 

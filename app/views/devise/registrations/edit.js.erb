@@ -1,0 +1,10 @@
+new_spark = $("#new_spark_div")
+homepage = $("#homepage")
+dashboard = $("#dashboard")
+other_pages = $("#other_pages")
+mainwrapper = $("#mainwrapper")
+
+new_spark.empty().removeAttr("style");
+dashboard.empty().removeAttr("style");
+homepage.empty().removeAttr("style");
+other_pages.empty().removeAttr("style").html("<%= j render '/devise/registrations/edit_partial' %>");
