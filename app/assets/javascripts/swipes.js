@@ -48,11 +48,11 @@ $( document ).ready(function(event) {
     swipe:function(event, direction, distance, duration, fingerCount) {
       homepage.removeAttr('style');
       if (direction === "right"){
-        $.getScript("swipe_to_spark");
+        $.getScript("/swipe_to_spark");
 
       }
       if(direction === "left"){
-        $.getScript("swipe_to_dash");
+        $.getScript("/swipe_to_dash");
       }
     },
       allowPageScroll:"auto"
