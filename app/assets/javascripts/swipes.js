@@ -18,7 +18,7 @@ $( document ).ready(function(event) {
       new_spark.animate({
         right:'100%',
         opacity: 1
-      },{ duration: 200, queue: false});
+      },{ duration: 500, queue: false});
       $('#homepage').css("display", "block");
       $('#homepage').animate({
         left: "0%",
