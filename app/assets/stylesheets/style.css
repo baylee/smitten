@@ -184,6 +184,10 @@ input[type='submit']
 
 #landingheart{
   color: #e74c3c;
+  font-size: 30px;
+  -o-animation-duration: 0.5s;
+  -moz-animation-delay: 0s;
+  -webkit-animation-iteration-count: infinite;
 }
 
 #sparkshow, #editspark, #messageindex{
@@ -313,8 +317,8 @@ body {
 #desktopheart{
 font-size: 40px;
 color: rgb(231, 76, 60);
--vendor-animation-duration: 3s;
-  -vendor-animation-delay: 2s;
-  -vendor-animation-iteration-count: infinite;
+-o-animation-duration: 0.5s;
+-moz-animation-delay: 0s;
+-webkit-animation-iteration-count: infinite;
 }
 
