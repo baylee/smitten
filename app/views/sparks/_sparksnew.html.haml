@@ -21,10 +21,11 @@
       = f.hidden_field :longitude, :id => "lon"
       = f.submit "Submit", :class => "button anchor alert"
 
-    %h3.padding Or, drop a pin, and return later to complete your Spark!
+    #new_pin_div
+      %h3.padding Or, drop a pin, and return later to complete your Spark!
 
-    = form_for @spark, :method => "post" do |f|
-      = f.hidden_field :user_id, :value => current_user.id
-      = f.hidden_field :latitude,  :id => "lat2"
-      = f.hidden_field :longitude, :id => "lon2"
-      = f.submit "Drop a Pin", :class => "button anchor secondary"
+      = form_for @spark, :method => "post", :remote => true, :html => {:id => 'new_pin'}  do |f|
+        = f.hidden_field :user_id, :value => current_user.id
+        = f.hidden_field :latitude,  :id => "lat2"
+        = f.hidden_field :longitude, :id => "lon2"
+        = f.submit "Drop a Pin", :class => "button anchor secondary"
