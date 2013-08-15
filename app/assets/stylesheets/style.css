@@ -313,5 +313,8 @@ body {
 #desktopheart{
 font-size: 40px;
 color: rgb(231, 76, 60);
+-vendor-animation-duration: 3s;
+  -vendor-animation-delay: 2s;
+  -vendor-animation-iteration-count: infinite;
 }
 
