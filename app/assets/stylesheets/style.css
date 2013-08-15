@@ -335,4 +335,5 @@ color: rgb(231, 76, 60);
 
 #profile_link > a{
   text-decoration: underline;
+  font-weight: 600;
 }
