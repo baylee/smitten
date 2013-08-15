@@ -1,7 +1,8 @@
 $ ->
 # --------------- All this is for updating location --------------------
   create_location_only_spark = () ->
-    $('#update_location').append('<img src="/assets/ajax-loader.gif" />')
+    $('#update_location').css('display', 'none')
+    $('#location_alert').append('<img src="/assets/ajax-loader-2.gif" />')
 
     handleNoGeolocation = (errorFlag) ->
       if (errorFlag)
