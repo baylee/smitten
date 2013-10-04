@@ -7,7 +7,13 @@ var mainwrapper = $("#mainwrapper")
 dashboard.empty().removeAttr("style");
 other_pages.empty().removeAttr("style");
 
-new_spark.empty().removeAttr("style").html("<%= j render 'sparksnew' %>")
+new_spark.removeAttr("style")
+$(function(){
+  if($("#new_spark_div").is(":empty")){
+    $("#new_spark_div").html("<%= j render '/sparks/sparksnew' %>")
+  }
+})
+
 
 var smoothtrans = function(){
   new_spark.css('display', 'block');

@@ -4,9 +4,14 @@ var dashboard = $("#dashboard")
 var other_pages = $("#other_pages")
 var mainwrapper = $("#mainwrapper")
 
-dashboard.empty().removeAttr("style").html("<%= j render 'dashboardpartial' %>")
-new_spark.empty().removeAttr("style");
-other_pages.empty().removeAttr("style");
+$(function(){
+  if($("#dashboard").is(":empty")){
+    $("#dashboard").html("<%= j render 'dashboardpartial' %>")
+  }
+})
+// dashboard.empty().removeAttr("style").html("<%= j render 'dashboardpartial' %>")
+// new_spark.removeAttr("style");
+// other_pages.empty().removeAttr("style");
 
 var smoothtrans = function(){
   dashboard.css('display', 'block');

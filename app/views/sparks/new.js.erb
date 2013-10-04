@@ -7,7 +7,7 @@ var mainwrapper = $("#mainwrapper")
 other_pages.empty().removeAttr("style");
 homepage.empty().removeAttr("style");
 dashboard.empty().removeAttr("style");
-new_spark.empty().removeAttr("style").html("<%= j render '/sparks/sparksnew' %>")
+new_spark.removeAttr("style").html("<%= j render '/sparks/sparksnew' %>")
 
 new_spark.css('display', 'block');
 new_spark.css("right", "0%");
