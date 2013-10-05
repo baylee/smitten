@@ -22,7 +22,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'annotate'
-  gem 'rack-mini-profiler'
+  # gem 'rack-mini-profiler'
 end
 
 group :development, :production do
