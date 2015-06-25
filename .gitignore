@@ -15,6 +15,7 @@
 /tmp
 
 .env
+/config/env.yml
 */*.orig
 .DS_Store
 */.DS_Store
