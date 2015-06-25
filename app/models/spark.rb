@@ -18,4 +18,8 @@ class Spark < ActiveRecord::Base
     end
     x
   end
+
+  def created_near(time)
+    self.created_at.between?(time - 3.hours, time + 3.hours)
+  end
 end
