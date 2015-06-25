@@ -11,7 +11,8 @@
     </section>
 
 <script type='text/javascript'>
-    var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
+    L.mapbox.accessToken = 'pk.eyJ1IjoiZ2RvbWluZ3UiLCJhIjoieWNkSk1vUSJ9.n2JMI4LKoHvHqfF_bFJXGQ';
+    var map = L.mapbox.map('map', 'mapbox.streets')
         // map.addLayer(L.tileLayer('http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg'));
 
     var markers = new L.MarkerClusterGroup();
@@ -56,7 +57,9 @@
 
     map.addLayer(markers);
     // zoom the map to fit the bounds of the markers:
-    setTimeout(function(){map.fitBounds(markers.getBounds())}, 1000);
+    if (sparkPoints.length > 0){
+        setTimeout(function(){map.fitBounds(markers.getBounds())}, 1000);
+    }
 
 
 </script>
