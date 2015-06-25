@@ -31,9 +31,9 @@ class HomeController < ApplicationController
 
   def landing_page
     # ADD THIS BACK ONCE WE ARE READY TO START TESTING ON MOBILE ONLY!
-   if !mobile_device?
-     redirect_to desktop_path
-   end
+   # if !mobile_device?
+   #   redirect_to desktop_path
+   # end
   end
 
   def desktop
