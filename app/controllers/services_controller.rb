@@ -42,17 +42,15 @@ class ServicesController < ApplicationController
 
       # continue only if provider and uid exist
       if uid != '' and provider != ''
-
+        auth = Service.find_by_provider_and_uid(provider, uid)
+        if auth && (auth.expires_at.blank? || auth.expires_at < Time.zone.now)
+          auth.update_attributes(:oauth_token => access_token, :expires_at => expires_at)
+        end
         # nobody can sign in twice, nobody can sign up while being signed in (this saves a lot of trouble)
         if !user_signed_in?
 
           # check if user has already signed in using this service provider and continue with sign in process if yes
-          auth = Service.find_by_provider_and_uid(provider, uid)
-
           if auth
-            if auth.expires_at.blank? || auth.expires_at < Time.zone.now
-              auth.update_attributes(:oauth_token => access_token, :expires_at => expires_at)
-            end
             flash[:notice] = 'Signed in successfully via ' + provider.capitalize + '.'
             sign_in_and_redirect(:user, auth.user)
           else
@@ -93,9 +91,8 @@ class ServicesController < ApplicationController
           # the user is currently signed in
 
           # check if this service is already linked to his/her account, if not, add it
-          auth = Service.find_by_provider_and_uid(provider, uid)
           if !auth
-            current_user.services.create(:provider => provider, :uid => uid)#, :uname => name, :uemail => email)
+            current_user.services.create(:provider => provider, :uid => uid, :expires_at => expires_at)#, :uname => name, :uemail => email)
             flash[:notice] = 'Sign in via ' + provider.capitalize + ' has been added to your account.'
             redirect_to services_path
           else
