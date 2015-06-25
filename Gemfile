@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.1.1'
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
@@ -11,7 +11,7 @@ gem 'dotenv-rails'
 gem 'quiet_assets'
 gem 'devise'
 gem 'omniauth-facebook'
-gem 'koala'
+gem 'koala', '~> 2.0.0'
 gem 'geocoder'
 gem 'will_paginate'
 

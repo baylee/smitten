@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130813001842) do
+ActiveRecord::Schema.define(:version => 20150625045240) do
 
   create_table "flags", :force => true do |t|
     t.text     "reason"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20130813001842) do
     t.datetime "updated_at",  :null => false
     t.string   "uid"
     t.string   "oauth_token"
+    t.datetime "expires_at"
   end
 
   add_index "services", ["user_id"], :name => "index_authentications_on_user_id"

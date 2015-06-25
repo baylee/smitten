@@ -31,24 +31,14 @@ class ServicesController < ApplicationController
         omniauth['extra']['raw_info']['name'] ? name =  omniauth['extra']['raw_info']['name'] : name = ''
         omniauth['extra']['raw_info']['id'] ?  uid =  omniauth['extra']['raw_info']['id'] : uid = ''
         omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
-      elsif service_route == 'github'
-        omniauth['user_info']['email'] ? email =  omniauth['user_info']['email'] : email = ''
-        omniauth['credentials']['token'] ? access_token =  omniauth['credentials']['token'] : access_token = ''
-        omniauth['user_info']['name'] ? name =  omniauth['user_info']['name'] : name = ''
-        omniauth['extra']['raw_info']['id'] ?  uid =  omniauth['extra']['raw_info']['id'] : uid = ''
-        omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
-      elsif service_route == 'twitter'
-        email = ''    # Twitter API never returns the email address
-        omniauth['user_info']['name'] ? name =  omniauth['user_info']['name'] : name = ''
-        omniauth['credentials']['token'] ? access_token =  omniauth['credentials']['token'] : access_token = ''
-        omniauth['uid'] ?  uid =  omniauth['uid'] : uid = ''
-        omniauth['provider'] ? provider =  omniauth['provider'] : provider = ''
+        omniauth['credentials']['expires_at'] ? expires_at =  Time.at(omniauth['credentials']['expires_at']) : expires_at = nil
       else
         # we have an unrecognized service, just output the hash that has been returned
         render :text => omniauth.to_yaml
         #render :text => uid.to_s + " - " + name + " - " + email + " - " + provider
         return
       end
+
 
       # continue only if provider and uid exist
       if uid != '' and provider != ''
@@ -58,7 +48,11 @@ class ServicesController < ApplicationController
 
           # check if user has already signed in using this service provider and continue with sign in process if yes
           auth = Service.find_by_provider_and_uid(provider, uid)
+
           if auth
+            if auth.expires_at.blank? || auth.expires_at < Time.zone.now
+              auth.update_attributes(:oauth_token => access_token, :expires_at => expires_at)
+            end
             flash[:notice] = 'Signed in successfully via ' + provider.capitalize + '.'
             sign_in_and_redirect(:user, auth.user)
           else
